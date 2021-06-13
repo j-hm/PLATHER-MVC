@@ -51,11 +51,16 @@
 							<button class="btn_search">검색</button>
 						</p>
 						<div class="table"></div>
+						</form>
 				</div>
-				</form>
 			</div>
 		</div>
 	</div>
 	<%@include file="/WEB-INF/views/include/include_footer.jspf"%>
 </body>
+<script>
+	document.querySelector("button.modify").addEventListener("click",(e)=>{
+		location.href="${rootPath}/mypage/update"
+	})
+</script>
 </html>
