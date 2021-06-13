@@ -1,0 +1,90 @@
+@charset "UTF-8";
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+#container {
+	min-height: calc(100vh - 70px); /*임시*/
+	padding: 150px 50px 50px 50px; /*임시*/
+	line-height: 40px;
+	width: 80%;
+	margin: auto;
+}
+
+#container div {
+	width: 90%;
+	white-space: nowrap;
+}
+
+#container label {
+	display: inline-block;
+	width: 20%;
+	text-align: right;
+	margin: 5px 30px 5px 0px;
+	padding: 10px;
+	white-space: nowrap;
+}
+
+#container input {
+	width: 70%;
+	padding: 8px;
+	outline: 0;
+}
+
+span.nickname {
+	font-weight: 800;
+}
+
+#container div.div-content {
+	display: flex;
+}
+
+#container textarea {
+	width: 70%;
+	margin-left: 4px;
+	resize: none;
+	overflow-y: scroll;
+}
+
+div.div-sub {
+	text-align: center;
+	padding-top: 10px;
+}
+
+fieldset {
+	margin-left: 30px;
+	margin-top: 5px;
+	padding: 10px 0px;
+	display: inline-block;
+	border: 1px solid gray;
+	border-radius: 10px;
+	width: 90%;
+}
+
+legend {
+	text-align: left;
+	margin-left: 40px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+#container .div-button {
+	text-align: right;
+	padding-top: 20px;
+}
+
+button {
+	padding: 5px 10px;
+	margin-top: 10px;
+	background-color: #91c788;
+	border: 0px;
+	border-radius: 5px;
+}
+
+button:hover {
+	cursor: pointer;
+	font-weight: bold;
+}

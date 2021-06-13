@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'GmarketSansLight';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: 'GmarketSansLight';
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+div#container {
+	border-radius: 3px;
+	width: 500px;
+	height: 650px;
+	position: relative;
+	top: 35px;
+	margin: 0 auto;
+}
+
+form.join_form fieldset {
+	border: 1px solid black;
+	border-radius: 10px;
+	text-align: center;
+}
+
+form.join_form legend {
+	background-color: #52734d;
+	color: white;
+	font-family: Do Hyeon;
+	font-size: 30px;
+	text-shadow: 2px 2px 2px black;
+	letter-spacing: 2px;
+	border-radius: 3px;
+	width: 200px;
+	padding: 8px 10px;
+}
+
+form.join_form input {
+	display: block;
+	width: 80%;
+	margin: 10px auto;
+	padding: 10px;
+	border-radius: 15px;
+	outline: 0;
+	border: 1px solid #ddd;
+}
+
+form.join_form input:focus {
+	border: 1px solid gray;
+}
+
+form.join_form div {
+	display: flex;
+	justify-content: center;
+	margin: 0px auto;
+	padding: 20px
+}
