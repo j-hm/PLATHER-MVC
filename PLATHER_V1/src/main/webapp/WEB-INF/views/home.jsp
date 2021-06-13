@@ -28,9 +28,9 @@ article#bn3 {
 		<h1>PLATHER</h1>
 		<div>
 			<ul>
-				<li><a href="${rootPath}/WEB-INF/views/notice/notice_list.jsp">공지사항</a></li>
-				<li>플레이리스트</li>
-				<li>마이페이지</li>
+				<li><a href="${rootPath}/notice">공지사항</a></li>
+				<li><a href="${rootPath}/playlist">플레이리스트</a></li>
+				<li><a href="${rootPath}/mypage">마이페이지</a></li>
 				<li>로그아웃</li>
 			</ul>
 		</div>

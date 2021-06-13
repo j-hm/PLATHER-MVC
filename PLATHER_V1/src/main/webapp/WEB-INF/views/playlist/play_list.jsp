@@ -8,12 +8,13 @@
 <meta charset="UTF-8">
 <link href="${rootPath}/static/css/play_list.css?ver=2021-06-12-006"
 	rel="stylesheet" />
+
 </head>
 <body>
 	<%@include file="/WEB-INF/views/include/include_header.jspf"%>
 	<div class="content">
 		<div class="play">
-			<div class="title"><p>플레이리스트</p><button>&#43; 등록</button></div>
+			<div class="title"><p>플레이리스트</p><button class="btn_add">&#43; 등록</button></div>
 			<table class="list">
 				<tr>
 					<th>글번호</th>
@@ -39,10 +40,18 @@
 			</table>
 		</div>
 		<div class="search">
-			<input />
+		<form>
+			<input/>
 			<button>검색</button>
+			</form>
 		</div>
 	</div>
 	<%@include file="/WEB-INF/views/include/include_footer.jspf"%>
 </body>
+<script>
+	document.querySelector("button.btn_add").addEventListener("click",(e)=>{
+		location.href="${rootPath}/playlist/insert"
+	})
+	
+</script>
 </html>
