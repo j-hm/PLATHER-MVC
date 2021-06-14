@@ -80,25 +80,21 @@ button:hover {
 	margin: 50px 30px;
 	border-radius: 10px;
 	background-color: #E1E1E1;
-}
-
-#right_container .box:hover {
-	cursor: pointer;
-}
-
-#right_container .b-title, .count {
 	text-align: center;
-	padding: 5px;
 }
+
 
 #right_container .count {
 	padding-top: 20px;
 	padding-bottom: 5px;
 }
-
-#right_container .count:hover {
+#right_container .box:hover {
+	cursor: pointer;
+}
+#right_container .box:hover div.count{
 	text-decoration: underline;
 }
+
 
 .search_container {
 	position: relative;

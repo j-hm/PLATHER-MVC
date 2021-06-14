@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="${rootPath}/static/css/mypage.css?ver=2"
+<link href="${rootPath}/static/css/mypage.css?ver=3"
 	rel="stylesheet" />
 <title>My Page</title>
 </head>
