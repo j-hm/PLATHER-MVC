@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>PLATHER MAIN</title>
-<link href="${rootPath}/static/css/main_home.css?ver=2021-06-12-001"
+<link href="${rootPath}/static/css/main_home.css?ver=2021-06-12-002"
 	rel="stylesheet" />
 <style>
 article#bn1 {
