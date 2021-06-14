@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="${rootPath}/static/css/play_list.css?ver=2021-06-12-006"
+<link href="${rootPath}/static/css/play_list.css?ver=2021-06-12-007"
 	rel="stylesheet" />
 
 </head>

@@ -1,90 +1,89 @@
 @charset "UTF-8";
 
-* {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-}
 
-#container {
-	min-height: calc(100vh - 70px); /*임시*/
-	padding: 150px 50px 50px 50px; /*임시*/
-	line-height: 40px;
-	width: 80%;
-	margin: auto;
-}
+      #main_container {
+        padding: 50px;
+        padding-top:130px;
+        line-height: 30px;
+        width: 80%;
+       margin: 0 auto;
+       min-height: calc(100vh - 70px);
+      	
+       
+      }
+      #main_container div {
+        white-space: nowrap;
+      }
+      label {
+        display: inline-block;
+        width: 20%;
+        text-align: right;
+        margin: 5px 30px 5px 0px;
+        padding: 10px;
+        white-space: nowrap;
+      }
 
-#container div {
-	width: 90%;
-	white-space: nowrap;
-}
+      input {
+        width: 70%;
+        padding: 8px;
+        outline: 0;
+      }
+      button {
+        background-color: #91c788;
+        border: 0px;
+        border-radius: 5px;
+      }
+      span.nickname {
+        font-weight: 800;
+      }
+      textarea {
+        width: 70%;
+        margin-left: 4px;
+        resize: none;
+        overflow-y: scroll;
+      }
+      .list_buttons {
+        text-align: right;
+        padding: 20px;
+        margin-right: 7%;
+      }
+      div.list_buttons button {
+        padding: 5px 10px;
+        margin-top: 10px;
+      }
+      fieldset {
+        margin-left: 30px;
 
-#container label {
-	display: inline-block;
-	width: 20%;
-	text-align: right;
-	margin: 5px 30px 5px 0px;
-	padding: 10px;
-	white-space: nowrap;
-}
+        padding: 10px 0px;
+        display: inline-block;
 
-#container input {
-	width: 70%;
-	padding: 8px;
-	outline: 0;
-}
+        width: 90%;
+        border: 1px solid #53734e;
+        border-radius: 15px;
+      }
 
-span.nickname {
-	font-weight: 800;
-}
+      legend {
+        margin-left: 20px;
+        text-align: left;
+        padding: 2px 10px;
+        background-color: #53734e;
+        border-radius: 15px;
+        color: white;
+        font-weight: 900;
+      }
+      .div_content {
+        display: flex;
+      }
 
-#container div.div-content {
-	display: flex;
-}
-
-#container textarea {
-	width: 70%;
-	margin-left: 4px;
-	resize: none;
-	overflow-y: scroll;
-}
-
-div.div-sub {
-	text-align: center;
-	padding-top: 10px;
-}
-
-fieldset {
-	margin-left: 30px;
-	margin-top: 5px;
-	padding: 10px 0px;
-	display: inline-block;
-	border: 1px solid gray;
-	border-radius: 10px;
-	width: 90%;
-}
-
-legend {
-	text-align: left;
-	margin-left: 40px;
-	padding-left: 15px;
-	padding-right: 15px;
-}
-
-#container .div-button {
-	text-align: right;
-	padding-top: 20px;
-}
-
-button {
-	padding: 5px 10px;
-	margin-top: 10px;
-	background-color: #91c788;
-	border: 0px;
-	border-radius: 5px;
-}
-
-button:hover {
-	cursor: pointer;
-	font-weight: bold;
-}
+      button:hover {
+        cursor: pointer;
+        font-weight: bold;
+      }
+      div.add_buttons {
+        text-align: right;
+        margin-right: 30px;
+      }
+      .add_buttons button {
+        padding: 7px;
+        width: 20%;
+      }
