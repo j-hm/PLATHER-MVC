@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="${rootPath}/static/css/play_list.css?ver=2021-06-12-007"
+<link href="${rootPath}/static/css/play_list.css?ver=2021-06-15-001"
 	rel="stylesheet" />
 
 </head>
@@ -15,6 +15,12 @@
 	<div class="content">
 		<div class="play">
 			<div class="title"><p>플레이리스트</p><button class="btn_add">&#43; 등록</button></div>
+			<div class="select">
+				<select>
+					<option>조회순</option>
+					<option>추천순</option>
+				</select>
+			</div>
 			<table class="list">
 				<tr>
 					<th>글번호</th>

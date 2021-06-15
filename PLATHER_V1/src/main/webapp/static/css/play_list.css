@@ -32,7 +32,13 @@
 	box-shadow: 2px 2px 2px #e1e1e1;
 	cursor: pointer;
 }
-
+.select {
+	padding: 10px 0px 0px 10px;
+}
+.select select {
+	padding: 5px;
+	border-radius: 5px;
+}
 .list {
 	border-collapse: separate;
 	border-spacing: 1px;

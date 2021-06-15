@@ -15,10 +15,12 @@
 	padding: 0;
 	font-family: 'GmarketSansLight';
 }
+
 a {
 	color: black;
 	text-decoration: none;
 }
+
 h1 {
 	padding: 22px 15px 20px 15px;
 	font-weight: 900;
@@ -30,7 +32,6 @@ nav#main_nav {
 	background-color: none;
 	display: flex;
 	width: 100%;
-	
 }
 
 nav#main_nav div {
@@ -50,14 +51,12 @@ nav#main_nav li {
 
 section#banners article {
 	height: 80vh;
-	background-size: cover;
 	background-attachment: fixed;
+	background-size: 100% 100%;
 }
-
 article#bn2 {
 	display: flex;
 	justify-content: space-around;
-	line-height: 60vh;
 	padding-top: 100px;
 }
 

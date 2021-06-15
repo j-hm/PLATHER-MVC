@@ -7,11 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>PLATHER MAIN</title>
-<link href="${rootPath}/static/css/main_home.css?ver=2021-06-12-002"
+<link href="${rootPath}/static/css/main_home.css?ver=2021-06-15-002"
 	rel="stylesheet" />
 <style>
 article#bn1 {
-	background: url("${rootPath}/static/images/bn1.png") no-repeat;
+	background: url("${rootPath}/static/images/main_bn.png") no-repeat;
 }
 
 article#bn2 {
