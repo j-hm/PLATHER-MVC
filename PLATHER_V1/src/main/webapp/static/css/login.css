@@ -21,9 +21,13 @@ div.main_box {
 	width: 70%;
 	height: 600px;
 	border: 3px solid black;
-	margin: 60px 240px;
+	margin: 60px auto;
 	display: flex;
 	border-radius: 4px;
+	
+	
+	
+	
 }
 
 div.main_box p {
@@ -46,13 +50,16 @@ div.main_img {
 form.sub_box {
 	/* 녹색 box 색, 위치, 크기 조절 */
 	background-color: #91c788;
-	margin-left: auto;
+	margin-right:0;
 	display: flex;
+	width:80%;
+	border:1px solid green;
+	white-space: nowrap;
 }
 
 section.sub_menu {
 	/* id, password 등 하나로 묶어 기본 설정 */
-	width: 100%;
+
 	padding: 130px 20px;
 	position: relative;
 }
