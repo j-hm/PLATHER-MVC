@@ -7,13 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Project PLATHER</title>
-<link href="${rootPath}/static/css/login.css" rel="stylesheet" />
+<link href="${rootPath}/static/css/login.css?ver=003" rel="stylesheet" />
 </head>
 <body>
 	<div class="main_box">
 		<p>welcome :)</p>
 		<div class="main_img"></div>
-
 
 
 		<form method="POST" class="sub_box">
@@ -26,14 +25,14 @@
 
 				<div class="box_password">
 					<div class="sub_img2"></div>
-					<label>PassWord</label> <input id="ip_password" placeholder="PW 입력" /></input>
+					<label>PassWord</label> <input id="ip_password" placeholder="PW 입력" />
 				</div>
 
 				<p class="member">
-					회원이 아니신가요 :0? <a href="member.html">가입하기</a>
+					회원이 아니신가요?? <a href="${rootPath}/login/join">가입하기</a>
 				</p>
 				<div class="btn_su">
-					<button>Sing Up!</button>
+					<button>Sign Up!</button>
 				</div>
 			</section>
 

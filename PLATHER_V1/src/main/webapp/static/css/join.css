@@ -11,60 +11,73 @@
 
 * {
 	box-sizing: border-box;
-	margin: 0;
+	margin:0;
 	padding: 0;
 	font-family: 'GmarketSansLight';
 }
 
-html, body {
-	width: 100%;
-	height: 100%;
-}
-
 div#container {
-	border-radius: 3px;
-	width: 500px;
-	height: 650px;
-	position: relative;
-	top: 35px;
+	width: 70%;
 	margin: 0 auto;
+	margin-top:100px;
 }
 
 form.join_form fieldset {
-	border: 1px solid black;
-	border-radius: 10px;
-	text-align: center;
+	 border: 1px solid #53734e;
+ 	 border-radius: 15px;
+ 	 padding : 10px;
 }
 
 form.join_form legend {
-	background-color: #52734d;
-	color: white;
-	font-family: Do Hyeon;
-	font-size: 30px;
-	text-shadow: 2px 2px 2px black;
-	letter-spacing: 2px;
-	border-radius: 3px;
-	width: 200px;
-	padding: 8px 10px;
+	text-align: center;
+  padding: 10px 20px;
+  background-color: #53734e;
+  border-radius: 15px;
+  color: white;
+  font-weight: 900;
+}
+form.join_form label{
+	 display: inline-block;
+  width: 30%;
+  text-align: right;
+  margin: 4px 5px;
+  padding: 8px;
+  font-weight: bold;
+  white-space: nowrap;
 }
 
 form.join_form input {
-	display: block;
-	width: 80%;
-	margin: 10px auto;
-	padding: 10px;
-	border-radius: 15px;
-	outline: 0;
-	border: 1px solid #ddd;
+	width: 50%;
+  margin: 4px 5px;
+  padding: 8px;
+  border-radius: 25px;
+  outline: 0;
+  border-color: #53734e;
 }
 
-form.join_form input:focus {
-	border: 1px solid gray;
+form.join_form input:focus{
+	  border-color: #53734e;
+}
+form.join_form input:hover{
+	 background-color: #feffdf;
 }
 
-form.join_form div {
-	display: flex;
-	justify-content: center;
-	margin: 0px auto;
-	padding: 20px
+.buttons{
+	text-align: right;
+	padding-right: 20px;
+	margin-top:20px;
+}
+button{
+	padding: 10px 20px;
+  outline: 0;
+  border: 0;
+  background-color: #feffdf;
+  color: #53734e;
+  border-radius: 15px;
+  font-weight: 900;
+  border: 2px solid #53734e;
+}
+button:hover {
+  box-shadow: 2px 2px 2px #53734e;
+  cursor: pointer;
 }
