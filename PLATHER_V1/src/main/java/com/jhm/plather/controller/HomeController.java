@@ -16,7 +16,12 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		
-		return "home";
+		return "member/login";
+	}
+	@RequestMapping(value="/home",method = RequestMethod.POST)
+	public String mainPage(Locale locale, Model model) {
+	
+		return  "main";
 	}
 	
 }

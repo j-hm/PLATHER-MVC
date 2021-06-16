@@ -15,51 +15,50 @@
 	padding: 0;
 	font-family: 'GmarketSansLight';
 }
+html, body{
+	width:100%;
+	height:100%;
+}
 
 div.main_box {
 	/* 흰색 큰 box */
 	width: 70%;
 	height: 600px;
 	border: 3px solid black;
-	margin: 60px auto;
+	margin: 45px 240px;
 	display: flex;
 	border-radius: 4px;
-	
-	
-	
-	
+	position: relative;
 }
 
 div.main_box p {
 	/* 큰 박스 글씨체 위치 및 크기 조절*/
-	font-family: Do Hyeon;
+	font-family: 'GmarketSansLight';
 	font-size: 65px;
+	font-weight:bold;
 	padding: 40px 10px;
 	writing-mode: vertical-lr;
 }
 
-div.main_img {
+div.main_img img{
 	/* 로고 img 크기 및 위치 조절*/
-	background: url("image/main.png") no-repeat;
-	width: 40%;
-	background-size: 250px;
-	background-position: center;
-	margin-right: 50px;
+	
+	width: 50%;
+	margin: 180px 75px;
+	
 }
+
 
 form.sub_box {
 	/* 녹색 box 색, 위치, 크기 조절 */
 	background-color: #91c788;
-	margin-right:0;
+	margin-left: auto;
 	display: flex;
-	width:80%;
-	border:1px solid green;
-	white-space: nowrap;
 }
 
 section.sub_menu {
 	/* id, password 등 하나로 묶어 기본 설정 */
-
+	width: 100%;
 	padding: 130px 20px;
 	position: relative;
 }
@@ -69,7 +68,7 @@ div.box_username {
 	display: flex;
 	justify-content: left;
 	align-items: center;
-	position: relative;
+	
 }
 
 div.box_password {
@@ -77,70 +76,69 @@ div.box_password {
 	display: flex;
 	justify-content: left;
 	align-items: center;
-	position: relative;
+	
 }
 
 div.sub_img1, div.sub_img2 {
 	/* id, password 이미지 위치 및 크기 설정 */
 	width: 50px;
 	height: 50px;
-	background: url("image/username.png") no-repeat;
+	
 }
 
 div.sub_img2 {
 	/* password 이미지 세부 위치 및 크기 설정 */
 	width: 50px;
 	height: 50px;
-	background: url("image/password.png") no-repeat;
 	margin: 40px 0px;
 }
 
 div.box_username label {
 	/* id 글씨체의 색, 크기 및 위치 설정 */
-	font-size: 30px;
+	font-size: 20px;
+	font-weight:bold;
 	color: white;
-	font-family: Do Hyeon;
+	font-family: 'GmarketSansLight';
 	padding: 0px 10px;
 	margin-top: 20px;
 }
 
 div.box_password label {
 	/*password 글씨체의 색, 크기 및 위치 설정 */
-	font-size: 30px;
+	font-size: 20px;
+	font-weight:bold;
 	color: white;
-	font-family: Do Hyeon;
+	font-family: 'GmarketSansLight';
 	padding: 0px 10px;
 	margin-top: 20px;
 }
 
 input#ip_username {
 	/* id input box 위치 및 크기 설정 */
-	position: absolute;
-	top: 65px;
-	left: 75px;
-	width: 250px;
-	outline: none;
-	text-align: center;
-	border-radius: 3px;
-	height: 35px;
+	 margin-top: 20px;
+     width: 250px;
+     outline: none;
+     text-align: center;
+     border-radius: 3px;
+     height: 35px;
+
 }
 
 input#ip_password {
 	/* password input box 위치 및 크기 설정 */
-	position: absolute;
-	top: 95px;
-	left: 75px;
-	width: 250px;
-	outline: none;
-	text-align: center;
-	border-radius: 3px;
-	height: 35px;
+ 	margin-left: 5px;
+    margin-top: 20px;
+    width: 250px;
+    outline: none;
+    text-align: center;
+    border-radius: 3px;
+    height: 35px;
 }
 
 div.box_passowrd input#ip_password:hover, div.box_username input#ip_username:hover
 	{
 	/* input box에 마우스가 올라갈때 설정*/
-	background-color: rgb(19, 18, 18);
+	background-color: #E1E1E1;
 }
 
 div.box_password input#ip_password:focus, div.box_username input#ip_username:focus
@@ -148,19 +146,19 @@ div.box_password input#ip_password:focus, div.box_username input#ip_username:foc
 	/* input box 클 클릭할때 설정 */
 	width: 350px;
 	border: 4px solid #52734d;
-	transition: 0.5s;
+	transition: 1s;
 }
 
 section.sub_menu p.member {
 	/* 녹색 sub box p tag 위치 및 크기 설정 */
 	writing-mode: inherit;
-	font-family: Do Hyeon;
+	font-family: 'GmarketSansLight';
 	font-size: 20px;
 	color: white;
 	text-shadow: 1px 1px 3px gray;
 	position: absolute;
 	top: 300px;
-	left: 140px;
+	left: 100px;
 }
 
 p.member a {
@@ -185,8 +183,8 @@ div.btn_su button {
 	border-radius: 30px;
 	background-color: white;
 	color: #52734d;
-	font-size: 40px;
-	font-family: Do Hyeon;
+	font-size: 30px;
+	font-family: 'GmarketSansLight';
 	padding-bottom: 5px;
 	border: none;
 }
@@ -197,4 +195,5 @@ div.btn_su button:hover {
 	background-color: #52734d;
 	color: white;
 	cursor: pointer;
+	font-weight: bold;
 }

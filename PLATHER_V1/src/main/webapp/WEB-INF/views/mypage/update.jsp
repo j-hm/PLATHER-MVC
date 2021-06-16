@@ -11,7 +11,7 @@
 </head>
 <body>
 	<%@include file="/WEB-INF/views/include/include_header.jspf"%>
-	<form class="update">
+	<form class="update" method="POST" action="${rootPath}/mypage">
 		<fieldset>
 			<legend>필수 회원정보</legend>
 			<div>
@@ -19,20 +19,20 @@
 			</div>
 			<div>
 				<label>이메일</label> <input type="email" value="S2@love.come"
-					placeholder="" />
+					/>
 			</div>
 			<div>
-				<label>닉네임</label> <input value="zl존키티" placeholder="" />
+				<label>닉네임</label> <input value="zl존키티" />
 			</div>
 			<div>
-				<label>비밀번호</label> <input type="password" placeholder="" />
+				<label>비밀번호</label> <input type="password" />
 			</div>
 			<div>
-				<label>비밀번호 확인</label> <input type="password" placeholder="" />
+				<label>비밀번호 확인</label> <input type="password"  />
 			</div>
 		</fieldset>
 		<div class="btn_box">
-			<button type="button" class="btn_update">🖉수정하기</button>
+			<button class="btn_update">🖉수정하기</button>
 		</div>
 	</form>
 	<%@include file="/WEB-INF/views/include/include_footer.jspf"%>

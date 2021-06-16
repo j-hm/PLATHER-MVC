@@ -16,6 +16,11 @@ public class MypageController {
 
 		return "mypage/mypage";
 	}
+	@RequestMapping(value = { "/", "" }, method = RequestMethod.POST)
+	public String mypageAfterUpdate() {
+
+		return "mypage/mypage";
+	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public String detail() {

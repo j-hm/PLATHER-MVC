@@ -31,7 +31,7 @@ article#bn3 {
 				<li><a href="${rootPath}/notice">공지사항</a></li>
 				<li><a href="${rootPath}/playlist">플레이리스트</a></li>
 				<li><a href="${rootPath}/mypage">마이페이지</a></li>
-				<li><a href="${rootPath}/login">로그아웃</a></li>
+				<li><a href="#">로그아웃</a></li>
 			</ul>
 		</div>
 	</nav>
