@@ -7,14 +7,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Project PLATHER</title>
-<link href="${rootPath}/static/css/notice_list.css?ver=2021-06-12-002"
+<link href="${rootPath}/static/css/notice_list.css?ver=2021-06-30-003"
 	rel="stylesheet" />
 </head>
 <body>
 	<%@include file="/WEB-INF/views/include/include_header.jspf"%>
 	<div class="content">
 		<div class="notice">
-			<p>공지사항</p>
+			<div class="title">
+				<p>공지사항</p>
+				<button class="btn_input">등록</button>
+			</div>
 			<table class="list">
 				<tr>
 					<th>글번호</th>
@@ -46,4 +49,10 @@
 	</div>
 	<%@include file="/WEB-INF/views/include/include_footer.jspf"%>
 </body>
+<script>
+	document.querySelector("button.btn_input").addEventListener("click",(e)=>{
+		location.href="${rootPath}/notice/input"
+	})
+	
+</script>
 </html>

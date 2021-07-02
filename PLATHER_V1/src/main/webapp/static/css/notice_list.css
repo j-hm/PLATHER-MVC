@@ -1,10 +1,19 @@
 @charset "UTF-8";
 
 .content {
-	min-height: calc(100vh - 70px);
+	min-height: calc(100vh - 30px);
 }
+
 .notice {
 	padding: 150px;
+}
+
+.title {
+	display: flex;
+}
+
+.title button {
+	margin-left: auto;
 }
 
 .notice p {

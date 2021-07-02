@@ -56,7 +56,8 @@ header li a {
 }
 </style>
 <header>
-	<a href="${rootPath}/"><img src="${rootPath}/static/images/LOGO.png" /></a>
+	<a href="${rootPath}/"><img
+		src="${rootPath}/static/images/LOGO.png" /></a>
 	<ul>
 		<li><a href="${rootPath}/notice">공지사항</a></li>
 		<li><a href="${rootPath}/playlist">플레이리스트</a></li>

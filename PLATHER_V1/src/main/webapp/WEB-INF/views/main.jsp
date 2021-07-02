@@ -7,19 +7,19 @@
 <head>
 <meta charset="UTF-8">
 <title>PLATHER MAIN</title>
-<link href="${rootPath}/static/css/main_home.css?ver=2021-06-15-002"
+<link href="${rootPath}/static/css/main_home.css?ver=2021-06-27-004"
 	rel="stylesheet" />
 <style>
 article#bn1 {
-	background: url("${rootPath}/static/images/main_bn.png") no-repeat;
+	background: url("${rootPath}/static/images/summer_event.png") no-repeat;
 }
 
 article#bn2 {
-	background: url("${rootPath}/static/images/bn.png") no-repeat;
+	background: url("${rootPath}/static/images/bn_white.png") no-repeat;
 }
 
 article#bn3 {
-	background: url("${rootPath}/static/images/bn_white.png") no-repeat;
+	background: url("${rootPath}/static/images/신곡.png") no-repeat;
 }
 </style>
 </head>
@@ -39,46 +39,33 @@ article#bn3 {
 		<article id="bn1"></article>
 		<article id="bn2">
 			<div>
-				<img src="${rootPath}/static/images/001.png" />
+				<h2>공지사항</h2>
+				<table>
+					<tr>
+						<th>제목</th>
+						<th>작성일</th>
+					</tr>
+					<tr>
+						<td>플레이리스트 공유 시 주의사항</td>
+						<td>2021-06-10</td>
+					</tr>
+				</table>
 			</div>
 			<div>
-				<img src="${rootPath}/static/images/002.png" />
-			</div>
-			<div>
-				<img src="${rootPath}/static/images/003.png" />
+				<h2>최근 플래더</h2>
+				<table>
+					<tr>
+						<th>제목</th>
+						<th>작성일</th>
+					</tr>
+					<tr>
+						<td>*여름에 필청* 체감온도 -5도 플레이리스트</td>
+						<td>2021-06-10</td>
+					</tr>
+				</table>
 			</div>
 		</article>
-		<article id="bn3">
-			<div>
-				<a href="#">공지사항</a>
-			</div>
-			<table>
-				<tr>
-					<th>제목</th>
-					<th>작성일</th>
-				</tr>
-				<tr>
-					<td>플레이리스트 공유 시 주의사항</td>
-					<td>2021-06-10</td>
-				</tr>
-				<tr>
-					<td>지금 이 순간이 우리의 파도라면</td>
-					<td>2021-06-09</td>
-				</tr>
-				<tr>
-					<td>두려워 말고 더 힘껏 마주하길</td>
-					<td>2021-06-09</td>
-				</tr>
-				<tr>
-					<td>우린 태양 아래 누구보다 더 뜨거우니까</td>
-					<td>2021-06-09</td>
-				</tr>
-				<tr>
-					<td>플래더 이용규칙(V1)</td>
-					<td>2021-06-08</td>
-				</tr>
-			</table>
-		</article>
+		<article id="bn3"></article>
 	</section>
 	<%@include file="/WEB-INF/views/include/include_footer.jspf"%>
 </body>

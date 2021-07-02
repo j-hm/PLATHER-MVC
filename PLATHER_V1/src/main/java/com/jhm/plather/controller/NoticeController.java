@@ -21,4 +21,9 @@ public class NoticeController {
 
 		return "notice/notice_detail";
 	}
+	@RequestMapping(value = "/input", method = RequestMethod.GET)
+	public String input() {
+
+		return "notice/notice_input";
+	}
 }

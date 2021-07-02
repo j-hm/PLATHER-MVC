@@ -22,16 +22,17 @@ a {
 }
 
 h1 {
-	padding: 22px 15px 20px 15px;
+	padding: 20px 15px 20px 15px;
 	font-weight: 900;
 	font-size: 25px;
 }
 
 nav#main_nav {
 	position: fixed;
-	background-color: none;
-	display: flex;
+	background-color: rgba(255, 255, 255, 0.5); 
+	display : flex;
 	width: 100%;
+	display: flex;
 }
 
 nav#main_nav div {
@@ -50,55 +51,49 @@ nav#main_nav li {
 }
 
 section#banners article {
-	height: 80vh;
-	background-attachment: fixed;
 	background-size: 100% 100%;
 }
+
+article#bn1 {
+	height: 400px;
+}
+
 article#bn2 {
+	height: 80vh;
 	display: flex;
 	justify-content: space-around;
-	padding-top: 100px;
 }
 
-article#bn2 img {
-	border-radius: 20px;
-	width: 200px;
-}
-
-article#bn3 {
-	padding-top: 100px;
-}
-
-article#bn3 div {
-	padding-bottom: 30px;
+article#bn2 div {
 	text-align: center;
-	font-size: 25px;
-	font-weight: 900;
+	margin: 80px 20px;
 }
 
-article#bn3 table {
-	display: flex;
-	justify-content: space-around;
+article#bn2 table {
 	text-align: center;
 	font-weight: bold;
 }
 
-article#bn3 th {
-	background-color: #e1e1e1;
+article#bn2 th {
+	background-color: #91c788;
 	width: 150px;
 	padding: 10px;
 	font-weight: bold;
 	vertical-align: top;
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid #91c788;
 }
 
-article#bn3 th:nth-child(1) {
+article#bn2 th:nth-child(1) {
 	width: 70%;
 }
 
-article#bn3 td {
+article#bn2 td {
 	width: 350px;
 	padding: 10px;
 	vertical-align: top;
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid #91c788;
+}
+
+article#bn3 {
+	height: 80vh;
 }
