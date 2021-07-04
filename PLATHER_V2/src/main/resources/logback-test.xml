@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<!-- appender : log를 표시할 때 사용할 format 설정 현재 logback에서 apperder를 설정하는 방법 
+		: appender > encoder > pattern 이전에는 encoder대신 layout을 사용했다. 현재도 사용가능하지만 가급적 
+		사용을 지양하고 있다. encoder를 사용할 때 class를 생략해도 기본값이 자동으로 설정된다. -->
+	<appender name="STDOUT"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder
+			class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>
+				%logger{10} %n[%20.20level] %m %n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="com.callor.score">
+		<appender-ref ref="STDOUT" />
+		<level level="DEBUG" />
+	</logger>
+	<logger name="org.springframework.transaction"
+		additivity="false">
+		<appender-ref ref="STDOUT" />
+		<level level="TRACE" />
+	</logger>
+	<logger name="org.springframework.jdbc" additivity="false">
+		<appender-ref ref="STDOUT" />
+		<level level="TRACE" />
+	</logger>
+
+	<!-- 특별히 조건이 부여되지 않은 경우에 logger를 표시하기 -->
+	<root>
+		<appender-ref ref="STDOUT" />
+		<level value="INFO" />
+	</root>
+</configuration>
