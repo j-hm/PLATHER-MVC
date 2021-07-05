@@ -82,7 +82,8 @@ div.list_buttons button {
 			<h2>공지사항 등록하기</h2>
 
 			<div>
-				<label>공지제목</label> <input id="n_title" name="n_title" value="${NT.n_title}"/>
+				<label>공지제목</label> <input id="n_title" name="n_title"
+					value="${NT.n_title}" />
 			</div>
 			<div>
 				<label>작성자</label><span class="nickname">관리자[Lv.1]</span>
@@ -102,18 +103,28 @@ div.list_buttons button {
 	<%@include file="/WEB-INF/views/include/include_footer.jspf"%>
 </body>
 <script>
+document.querySelector("form#notice_input").addEventListener("keydown",(e)=>{
+	
+	if (e.keyCode === 13) {
+		e.preventDefault()
+	}
+})
 	document.querySelector("form#notice_input button#save").addEventListener("click",(e)=>{
-		let n_title = document.querySelector("input#n_title")
-		let n_content = document.querySelector("input#n_content")
+		let n_title = document.querySelector("#n_title")
+		let n_content = document.querySelector("#n_content")
 		if(n_title.value === ""){
 			alert("제목을 입력하세요")
 			n_title.focus()
 			return false;
 		}
-
+		if(n_content.value === ""){
+			alert("내용을 입력하세요")
+			n_content.focus()
+			return false;
+		}
 		document.querySelector("form#notice_input").submit()
-			
-	})
+
+})
 	
 </script>
 </html>
