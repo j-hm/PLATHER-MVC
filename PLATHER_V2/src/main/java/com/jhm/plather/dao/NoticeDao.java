@@ -9,4 +9,5 @@ public interface NoticeDao extends GenericDao<NoticeVO, String, NoticeDTO> {
 
 	public List<NoticeDTO> findByTitle(String n_title);
 	public String findByMaxNcode();
+	public int updateHit(String n_code);
 }

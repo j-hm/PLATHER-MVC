@@ -39,7 +39,7 @@
 								<td>${NT.n_title}</td>
 								<td>${NT.n_mcode}</td>
 								<td>${NT.n_date}</td>
-								<td>${NT.n_hit}</td>
+								<td data-hit="${NT.n_hit}">${NT.n_hit}</td>
 							</tr>
 						</c:forEach>
 					</c:otherwise>

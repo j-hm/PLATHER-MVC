@@ -9,16 +9,12 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
 @NoArgsConstructor
-public class NoticeVO {
-
-	private String n_code;
-	private String n_title;
-	private String n_content;
-	private String n_date;
-	private String n_time;
-	private String n_mcode;
-	private int n_hit;
-
+@AllArgsConstructor
+public class CommentDTO {
+	private int c_seq;
+	private String c_bcode;
+	private String c_id;
+	private String c_comment;
+	private String c_date;
 }

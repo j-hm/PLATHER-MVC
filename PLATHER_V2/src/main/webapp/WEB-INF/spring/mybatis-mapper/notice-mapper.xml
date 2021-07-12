@@ -14,8 +14,8 @@
 		SELECT * FROM tbl_notice WHERE n_code = #{n_code}
 	</select>
 	<insert id="insert" parameterType="NoticeVO">
-		INSERT INTO tbl_notice(n_code, n_title, n_content, n_date, n_time, n_hit)
-		VALUES(#{n_code}, #{n_title}, #{n_content}, CURRENT_DATE(), CURRENT_TIME(), #{n_hit})
+		INSERT INTO tbl_notice(n_code, n_title, n_content, n_date, n_time)
+		VALUES(#{n_code}, #{n_title}, #{n_content}, CURRENT_DATE(), CURRENT_TIME())
 	</insert>
 	<update id="update" parameterType="NoticeVO">
 		UPDATE tbl_notice SET
@@ -23,6 +23,11 @@
 		n_content = #{n_content},
 		n_date = CURRENT_DATE(),
 		n_time = CURRENT_TIME()
+		WHERE n_code = #{n_code}
+	</update>
+	<update id="updateHit" parameterType="NoticeVO">
+		UPDATE tbl_notice SET
+		n_hit = n_hit + 1
 		WHERE n_code = #{n_code}
 	</update>
 	<delete id="delete">

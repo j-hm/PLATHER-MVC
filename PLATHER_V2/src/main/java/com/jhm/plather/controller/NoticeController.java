@@ -4,12 +4,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.jhm.plather.dao.CommentDao;
 import com.jhm.plather.dao.NoticeDao;
+import com.jhm.plather.model.CommentDTO;
 import com.jhm.plather.model.NoticeDTO;
 import com.jhm.plather.model.NoticeVO;
 import com.jhm.plather.sevice.NoticeService;
@@ -26,6 +30,7 @@ public class NoticeController {
 	@Qualifier("notionService")
 	protected final NoticeService nService;
 	protected final NoticeDao nDao;
+	protected final CommentDao cDao;
 
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
 	public String list(Model model) {
@@ -37,10 +42,11 @@ public class NoticeController {
 
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detail(String n_code, Model model) {
-
 		NoticeDTO nDTO = nService.findByNcode(n_code);
+		nDao.updateHit(n_code);
+		List<CommentDTO> comList = cDao.findByCbcode(n_code);
 		model.addAttribute("NT", nDTO);
-
+		model.addAttribute("COMS", comList);
 		return "notice/notice_detail";
 	}
 
