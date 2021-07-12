@@ -4,26 +4,26 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.jhm.plather.dao.NoticeDao">
-	<select id="selectAll" resultType="NoticeDTO">
+	<select id="selectAll" resultType="NoticeVO">
 		SELECT * FROM tbl_notice
 	</select>
 	<select id="findByMaxNcode" resultType="String">
 		SELECT MAX(n_code) FROM
 		tbl_notice
 	</select>
-	<select id="findById" resultType="NoticeDTO">
+	<select id="findById" resultType="NoticeVO">
 		SELECT * FROM tbl_notice WHERE
 		n_code = #{n_code}
 	</select>
-	<select id="findByTitle" resultType="NoticeDTO">
+	<select id="findByTitle" resultType="NoticeVO">
 		SELECT * FROM tbl_notice
 		WHERE n_title LIKE CONCAT('%', #{n_title}, '%')
 	</select>
-	<select id="findByNick" resultType="NoticeDTO">
+	<select id="findByNick" resultType="NoticeVO">
 		SELECT * FROM tbl_notice
 		WHERE n_mcode LIKE CONCAT('%', #{n_mcode}, '%')
 	</select>
-	<select id="findByContent" resultType="NoticeDTO">
+	<select id="findByContent" resultType="NoticeVO">
 		SELECT * FROM tbl_notice
 		WHERE n_content LIKE CONCAT('%', #{n_content}, '%')
 	</select>

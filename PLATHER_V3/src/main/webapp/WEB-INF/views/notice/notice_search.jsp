@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Project PLATHER</title>
-<link href="${rootPath}/static/css/notice_list.css?ver=2021-07-04-001"
+<link href="${rootPath}/static/css/notice_list.css?ver=2021-07-12-001"
 	rel="stylesheet" />
 </head>
 <body>
@@ -15,44 +15,43 @@
 	<div class="content">
 		<div class="notice">
 			<div class="title">
-				<p>공지사항</p>
-				<button class="btn_input">등록</button>
+				<p>"${TEXT}" 검색결과</p>
 			</div>
 			<table class="list">
-				<tr>
-					<th>글번호</th>
-					<th>제목</th>
-					<th>작성자</th>
-					<th>등록일</th>
-					<th>조회수</th>
-				</tr>
+
 				<c:choose>
-					<c:when test="${empty NOTICES}">
-						<tr>
-							<td colspan="5">데이터 없음</td>
-						</tr>
+					<c:when test="${empty SearchResult}">
+						<h3 class="no_result">검색 결과 없음</h3>
 					</c:when>
 					<c:otherwise>
-						<c:forEach items="${NOTICES}" var="NT" varStatus="i">
-							<tr id="highlight" data-ncode="${NT.n_code}">
+						<tr>
+							<th>글번호</th>
+							<th>제목</th>
+							<th>작성자</th>
+							<th>등록일</th>
+							<th>조회수</th>
+						</tr>
+						<c:forEach items="${SearchResult}" var="T" varStatus="i">
+							<tr id="highlight" data-ncode="${T.n_code}">
 								<td>${i.index+1}</td>
-								<td>${NT.n_title}</td>
-								<td>${NT.n_mcode}</td>
-								<td>${NT.n_date}</td>
-								<td data-hit="${NT.n_hit}">${NT.n_hit}</td>
+								<td>${T.n_title}</td>
+								<td>${T.n_mcode}</td>
+								<td>${T.n_date}</td>
+								<td data-hit="${T.n_hit}">${T.n_hit}</td>
 							</tr>
 						</c:forEach>
 					</c:otherwise>
 				</c:choose>
 			</table>
 		</div>
-		<%@include file="/WEB-INF/views/include/include_search.jspf"%>
+		<button class="tolist">뒤로가기</button>
 	</div>
 	<%@include file="/WEB-INF/views/include/include_footer.jspf"%>
 </body>
 <script>
-	document.querySelector("button.btn_input").addEventListener("click",(e)=>{
-		location.href="${rootPath}/notice/input"
+
+	document.querySelector("button.tolist").addEventListener("click",(e)=>{
+		location.href = "${rootPath}/notice"
 	})
 	document.querySelector("table.list").addEventListener("click",(e)=>{
 		

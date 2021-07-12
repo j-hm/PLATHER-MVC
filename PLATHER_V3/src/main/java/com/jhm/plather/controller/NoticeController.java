@@ -18,7 +18,7 @@ import com.jhm.plather.dao.NoticeDao;
 import com.jhm.plather.model.CommentDTO;
 import com.jhm.plather.model.NoticeDTO;
 import com.jhm.plather.model.NoticeVO;
-import com.jhm.plather.sevice.NoticeService;
+import com.jhm.plather.service.NoticeService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,7 +36,7 @@ public class NoticeController {
 
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
 	public String list(Model model) {
-		List<NoticeDTO> nvList = nService.selectAll();
+		List<NoticeVO> nvList = nService.selectAll();
 		model.addAttribute("NOTICES", nvList);
 		log.debug(nvList.toString());
 		return "notice/notice_list";
@@ -44,10 +44,10 @@ public class NoticeController {
 
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detail(String n_code, Model model) {
-		NoticeDTO nDTO = nService.findByNcode(n_code);
+		NoticeVO nVO = nService.findByNcode(n_code);
 		nDao.updateHit(n_code);
 		List<CommentDTO> comList = cDao.findByCbcode(n_code);
-		model.addAttribute("NT", nDTO);
+		model.addAttribute("NT", nVO);
 		model.addAttribute("COMS", comList);
 		return "notice/notice_detail";
 	}
@@ -72,8 +72,8 @@ public class NoticeController {
 
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public String update(String n_code, Model model) {
-		NoticeDTO nDTO = nService.findByNcode(n_code);
-		model.addAttribute("NT", nDTO);
+		NoticeVO nVO = nService.findByNcode(n_code);
+		model.addAttribute("NT", nVO);
 		return "notice/notice_input";
 	}
 
@@ -86,14 +86,14 @@ public class NoticeController {
 	@RequestMapping(value = "/search/{CAT}", method = RequestMethod.GET)
 	public String search(@PathVariable(name = "CAT") String cat, Model model,
 			@RequestParam(name = "text", required = false, defaultValue = "") String text) {
-		if(cat.equalsIgnoreCase("TITLE")) {
-			List<NoticeDTO> searchTitle = nDao.findByTitle(text);
+		if (cat.equalsIgnoreCase("TITLE")) {
+			List<NoticeVO> searchTitle = nDao.findByTitle(text);
 			model.addAttribute("SearchResult", searchTitle);
-		} else if(cat.equalsIgnoreCase("NICK")) {
-			List<NoticeDTO> searchNick = nDao.findByNick(text);
+		} else if (cat.equalsIgnoreCase("NICK")) {
+			List<NoticeVO> searchNick = nDao.findByNick(text);
 			model.addAttribute("SearchResult", searchNick);
-		} else if(cat.equalsIgnoreCase("CONTENT")) {
-			List<NoticeDTO> searchContent = nDao.findByContent(text);
+		} else if (cat.equalsIgnoreCase("CONTENT")) {
+			List<NoticeVO> searchContent = nDao.findByContent(text);
 			model.addAttribute("SearchResult", searchContent);
 		}
 		model.addAttribute("TEXT", text);
