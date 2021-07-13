@@ -32,7 +32,7 @@ public class NoticeController {
 	@Qualifier("notionService")
 	protected final NoticeService nService;
 	protected final NoticeDao nDao;
-	protected final CommentDao cDao;
+
 
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
 	public String list(Model model) {
@@ -46,9 +46,9 @@ public class NoticeController {
 	public String detail(String n_code, Model model) {
 		NoticeVO nVO = nService.findByNcode(n_code);
 		nDao.updateHit(n_code);
-		List<CommentDTO> comList = cDao.findByCbcode(n_code);
+//		List<CommentDTO> comList = cDao.findByCbcode(n_code);
+//		model.addAttribute("COMS", comList);
 		model.addAttribute("NT", nVO);
-		model.addAttribute("COMS", comList);
 		return "notice/notice_detail";
 	}
 

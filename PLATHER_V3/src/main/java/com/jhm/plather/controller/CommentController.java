@@ -27,26 +27,25 @@ public class CommentController {
 	public String insert(CommentVO cVO) {
 
 		cService.insert(cVO);
-		String n_code = cVO.getC_bcode();
-		return "redirect:/notice/detail?n_code=" + n_code;
+		String b_code = cVO.getC_bcode();
+		return "redirect:/board/detail?b_code=" + b_code;
 	}
 
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public String delete(@RequestParam("c_seq") String c_seq) {
 		CommentVO cVO = cDao.findById(c_seq);
-		String n_code = cVO.getC_bcode();
+		String b_code = cVO.getC_bcode();
 		cDao.delete(c_seq);
 
-		return "redirect:/notice/detail?n_code=" + n_code;
+		return "redirect:/board/detail?b_code=" + b_code;
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String update(CommentVO cVO) {
-		cVO = cDao.findById(String.valueOf(cVO.getC_seq()));
-		// 쎄함....
-		String n_code = cVO.getC_bcode();
+		CommentVO cVO2 = cDao.findById(String.valueOf(cVO.getC_seq()));
+		String b_code = cVO2.getC_bcode();
 		cDao.update(cVO);
 
-		return "redirect:/notice/detail?n_code=" + n_code;
+		return "redirect:/board/detail?b_code=" + b_code;
 	}
 }

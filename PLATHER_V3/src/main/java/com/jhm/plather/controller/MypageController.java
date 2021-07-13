@@ -54,6 +54,6 @@ public class MypageController {
 
 		model.addAttribute("MDETAIL", mbVO);
 
-		return "main";
+		return "redirect:/main";
 	}
 }

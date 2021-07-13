@@ -51,11 +51,15 @@
 
 	<h1>댓글</h1>
 	<form method="POST" class="comment" action="${rootPath}/comment/insert">
-		<input type="hidden" name="c_bcode" value="${NT.n_code}" />
+		<input type="hidden" name="c_bcode" value="${BOARD_DETAIL.b_code}" />
 		<table>
 			<tr>
 				<th><input name="c_id" placeholder="유저"></th>
 				<th></th>
+			</tr>
+			<tr>
+				<th><input name="c_title" placeholder="노래"></th>
+				<th><input name="c_singer" placeholder="가수"></th>
 			</tr>
 			<tr>
 				<th colspan="2"><textarea name="c_comment" row="5" cols="100"
@@ -84,6 +88,19 @@
 					</div>
 				</th>
 			</tr>
+			<c:choose>
+				<c:when test="${not empty CO}">
+					<th colspan="3">
+						<p>${CO.c_singer}</p>
+						<p>${CO.c_title}</p>
+
+						<button>+</button>
+					</th>
+				</c:when>
+				<c:otherwise>
+
+				</c:otherwise>
+			</c:choose>
 			<tr>
 				<td colspan="3">
 					<p class="com">${CO.c_comment}</p>
