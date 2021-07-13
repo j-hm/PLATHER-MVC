@@ -2,6 +2,7 @@ package com.jhm.plather.service;
 
 import org.springframework.ui.Model;
 
+import com.jhm.plather.model.MemberAndBoardDTO;
 import com.jhm.plather.model.MemberVO;
 
 public interface MemberService {
@@ -22,5 +23,9 @@ public interface MemberService {
 	public MemberVO findByNick(String m_nickname);
 
 	public MemberVO update(MemberVO mbVO);
+	
+	// 게시물 조회
+	public MemberAndBoardDTO findByIdBaord(String m_id);
+		
 
 }

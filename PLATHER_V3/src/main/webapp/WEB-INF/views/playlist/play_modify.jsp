@@ -16,29 +16,35 @@
 	<div class="content">
 		<div class="play">
 			<h1>플레이리스트</h1>
+			<form id="detail" method="post" action="${rootPath}/board/modify">
 			<table class="detail">
-				<tr class="data_code" data-code="${BOARD_DETAIL.b_code}">
-					<th colspan="3">${BOARD_DETAIL.b_title}</th>
-					<th><fmt:formatDate pattern="yyyy-MM-dd"
-							value="${BOARD_DETAIL.b_date}" /></th>
+				<tr>
+					<th colspan="3"><input name="b_title" 
+					value="${BOARD_DETAIL.b_title}"/></th>
+					<th><input readonly="readonly" value='<fmt:formatDate pattern="yyyy-MM-dd"  value="${BOARD_DETAIL.b_date}"/>'/>
+					</th>
 				</tr>
 				<tr>
-					<td colspan="3">조회수 : ${BOARD_DETAIL.b_hit}</td>
-					<td>${BOARD_DETAIL.b_id}</td>
+					<td colspan="3">조회수 14</td>
+					<td><input name="b_id" value="${BOARD_DETAIL.b_id}"/></td>
 				</tr>
 				<tr>
-					<td colspan="4">${BOARD_DETAIL.b_content}</td>
+					<td colspan="4">
+        				<textarea name="b_content" cols="50" rows="4" >${BOARD_DETAIL.b_content}</textarea>
+						
+					</td>
 				</tr>
 				<tr>
 					<td>💗</td>
+					<td><input name="b_code" value="${BOARD_DETAIL.b_code}" type="hidden"/></td>
 				</tr>
 			</table>
 			<div class="div_button">
-				<button class="btn_back" type="button">뒤로가기</button>
-				<button class="btn_modify" type="submit">수정</button>
-				<button class="btn_delete" type="button">삭제</button>
-			</div>
-
+					<button class="btn_modify" type="submit">수정</button>
+					<button class="btn_back" type="button">뒤로가기</button>
+					<button class="btn_list" type="button">목록으로</button>
+					</div>
+			</form>
 		</div>
 
 		<div class="songs">
@@ -53,29 +59,18 @@
 			</table>
 		</div>
 
-		<div class="comment">
-		</div>
 	</div>
-
 	<%@include file="/WEB-INF/views/include/include_footer.jspf"%>
 </body>
 <script>
-//변수
-const btn_back = document.querySelector("button.btn_back")
-const btn_modify=document.querySelector("button.btn_modify")
-const btn_delete=document.querySelector("button.btn_delete")
-let b_code = document.querySelector("tr.data_code").dataset.code
-
-//
-btn_back.addEventListener("click",()=>{
+const btn_list = document.querySelector("button.btn_list")
+const btn_back=document.querySelector("button.btn_back")
+btn_list.addEventListener("click",()=>{
 	location.href="${rootPath}/board"
 })
-btn_modify.addEventListener("click",()=>{
-	//alert(b_code)
-	location.href="${rootPath}/board/modify?b_code="+b_code
-})
-btn_delete.addEventListener("click",()=>{
-	location.href="${rootPath}/board/delete?b_code="+b_code
+btn_back.addEventListener("click",()=>{
+	window.history.back()
+	//location.href="${rootPath}/board"
 })
 </script>
 </html>

@@ -15,6 +15,11 @@
 		SELECT * FROM tbl_comment
 		WHERE c_bcode = #{c_bcode}
 	</select>
+	
+	<select id="findByMemberId" resultType="CommentDTO">
+		SELECT * FROM tbl_comment WHERE c_id = #{c_id}
+	</select>
+	
 	<insert id="insert" parameterType="CommentVO">
 		INSERT INTO
 		tbl_comment(c_bcode, c_id, c_comment, c_date)

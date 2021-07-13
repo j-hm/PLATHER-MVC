@@ -19,7 +19,7 @@
 
 	<div class="login error"></div>
 
-	<form id="login_form" method="POST">
+	<form id="login_form" method="POST" action="${rootPath}/member/login">
 		<h1>PLATHER</h1>
 
 		<div id="name_box">

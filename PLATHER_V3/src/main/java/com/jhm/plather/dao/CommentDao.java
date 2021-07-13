@@ -8,4 +8,7 @@ import com.jhm.plather.model.CommentVO;
 public interface CommentDao extends GenericDao<CommentVO, String>{
 
 	public List<CommentDTO> findByCbcode(String c_bcode);
+	
+	//member id로 댓글조회
+	public List<CommentDTO> findByMemberId(String c_id);
 }

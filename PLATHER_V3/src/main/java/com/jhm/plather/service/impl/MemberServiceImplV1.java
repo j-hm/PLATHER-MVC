@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.jhm.plather.dao.MemberDao;
+import com.jhm.plather.model.MemberAndBoardDTO;
 import com.jhm.plather.model.MemberVO;
 import com.jhm.plather.service.MemberService;
 
@@ -140,6 +141,13 @@ public class MemberServiceImplV1 implements MemberService {
 		// TODO 회원 정보 수정
 		mbDao.insertOrUpdate(mbVO);
 		return mbVO;
+	}
+	@Override
+	public MemberAndBoardDTO findByIdBaord(String m_id) {
+		//TODO m_id로 작성한 게시물 return
+		MemberAndBoardDTO DTO = mbDao.findByIdBoardResultMap(m_id);
+		
+		return DTO;
 	}
 
 }
