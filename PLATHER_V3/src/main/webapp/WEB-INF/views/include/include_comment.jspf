@@ -90,12 +90,20 @@
 			</tr>
 			<c:choose>
 				<c:when test="${not empty CO}">
-					<th colspan="3">
-						<p>${CO.c_singer}</p>
-						<p>${CO.c_title}</p>
+					<tr>
+						<th colspan="3">
+							<form method="post" action="${rootPath}/comment/insert/song">
 
-						<button>+</button>
-					</th>
+								<input type="hidden" name="c_bcode"
+									value="${BOARD_DETAIL.b_code}" /> <input name="s_title"
+									value="${CO.c_title}" readonly> <input name="s_singer"
+									value="${CO.c_singer}" readonly>
+
+								<button>+</button>
+
+							</form>
+						</th>
+					</tr>
 				</c:when>
 				<c:otherwise>
 

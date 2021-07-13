@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.jhm.plather.model.SongVO;
 
-public interface SongDao extends GenericDao<SongDao, Long>{
+public interface SongDao extends GenericDao<SongVO, Long>{
 
 	public List<SongVO> findByBoardCode(Long b_code);
 	public List<SongVO> findByTitle(String s_title);

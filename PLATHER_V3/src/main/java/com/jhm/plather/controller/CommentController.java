@@ -6,9 +6,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jhm.plather.dao.CommentDao;
+import com.jhm.plather.dao.SongDao;
 import com.jhm.plather.model.CommentDTO;
 import com.jhm.plather.model.CommentVO;
 import com.jhm.plather.model.NoticeVO;
+import com.jhm.plather.model.SongVO;
 import com.jhm.plather.service.CommentService;
 
 import lombok.RequiredArgsConstructor;
@@ -22,6 +24,7 @@ public class CommentController {
 
 	protected final CommentService cService;
 	protected final CommentDao cDao;
+	protected final SongDao sDao;
 
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String insert(CommentVO cVO) {
@@ -29,6 +32,13 @@ public class CommentController {
 		cService.insert(cVO);
 		String b_code = cVO.getC_bcode();
 		return "redirect:/board/detail?b_code=" + b_code;
+	}
+
+	@RequestMapping(value = "/insert/song", method = RequestMethod.POST)
+	public String insert(SongVO sVO, String c_bcode) {
+		sVO.setS_bcode(Long.valueOf(c_bcode));
+		sDao.insert(sVO);
+		return "redirect:/board/detail?b_code=" + c_bcode;
 	}
 
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
@@ -48,4 +58,5 @@ public class CommentController {
 
 		return "redirect:/board/detail?b_code=" + b_code;
 	}
+
 }
