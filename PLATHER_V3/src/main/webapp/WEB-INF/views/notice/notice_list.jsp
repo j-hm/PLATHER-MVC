@@ -45,8 +45,9 @@
 					</c:otherwise>
 				</c:choose>
 			</table>
+			<%@include file="/WEB-INF/views/include/include_pagination.jspf"%>
+			<%@include file="/WEB-INF/views/include/include_search.jspf"%>
 		</div>
-		<%@include file="/WEB-INF/views/include/include_search.jspf"%>
 	</div>
 	<%@include file="/WEB-INF/views/include/include_footer.jspf"%>
 </body>

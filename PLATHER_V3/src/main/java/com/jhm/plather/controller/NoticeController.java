@@ -33,12 +33,23 @@ public class NoticeController {
 	protected final NoticeService nService;
 	protected final NoticeDao nDao;
 
-
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
-	public String list(Model model) {
+	public String list(@RequestParam(value = "pageNum", required = false, defaultValue = "1") String pageNum,
+			Model model) throws Exception {
+		int intPageNum = Integer.valueOf(pageNum);
+		if (intPageNum > 0) {
+			model.addAttribute("PAGE_NUM", intPageNum);
+		}
+		List<NoticeVO> pageList = nService.selectAllPage(intPageNum);
+		model.addAttribute("NOTICES", pageList);
+
 		List<NoticeVO> nvList = nService.selectAll();
-		model.addAttribute("NOTICES", nvList);
-		log.debug(nvList.toString());
+		int num = nvList.size();
+		if (num % 10 == 0) {
+			model.addAttribute("endNum", (num / 10));
+		} else if (num % 10 != 0) {
+			model.addAttribute("endNum", (num / 10) + 1);
+		}
 		return "notice/notice_list";
 	}
 

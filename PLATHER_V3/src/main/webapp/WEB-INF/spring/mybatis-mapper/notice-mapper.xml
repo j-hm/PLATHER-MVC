@@ -6,6 +6,7 @@
 <mapper namespace="com.jhm.plather.dao.NoticeDao">
 	<select id="selectAll" resultType="NoticeVO">
 		SELECT * FROM tbl_notice
+		ORDER BY n_date DESC
 	</select>
 	<select id="findByMaxNcode" resultType="String">
 		SELECT MAX(n_code) FROM
