@@ -12,16 +12,15 @@
 <style>
 body {
 	/* 배경 이미지 설정 */
-	background-image: url("${rootPath}/static/images/back.png");
+	background: url("${rootPath}/static/images/back.png") no-repeat;
 	background-size: 100% 100%;
-	background-repeat: no-repeat;
 }
 </style>
 </head>
 <body>
 
 	<div id="font_box">
-		<span>sing up</span>
+		<span>sign up</span>
 		<p>welcome!</p>
 	</div>
 

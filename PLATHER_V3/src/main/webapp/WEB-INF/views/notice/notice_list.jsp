@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Project PLATHER</title>
-<link href="${rootPath}/static/css/notice_list.css?ver=2021-07-04-001"
+<link href="${rootPath}/static/css/notice_list.css?ver=2021-07-14-001"
 	rel="stylesheet" />
 </head>
 <body>
@@ -37,7 +37,7 @@
 							<tr id="highlight" data-ncode="${NT.n_code}">
 								<td>${i.index+1}</td>
 								<td>${NT.n_title}</td>
-								<td>${NT.n_mcode}</td>
+								<td>${NT.n_nickname}</td>
 								<td>${NT.n_date}</td>
 								<td data-hit="${NT.n_hit}">${NT.n_hit}</td>
 							</tr>

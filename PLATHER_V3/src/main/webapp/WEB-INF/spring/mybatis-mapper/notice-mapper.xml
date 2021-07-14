@@ -8,12 +8,20 @@
 		SELECT * FROM tbl_notice
 		ORDER BY n_date DESC
 	</select>
+	<select id="selectAllView" resultType="NoticeDTO">
+		SELECT * FROM view_nlist
+		ORDER BY n_date DESC
+	</select>
 	<select id="findByMaxNcode" resultType="String">
 		SELECT MAX(n_code) FROM
 		tbl_notice
 	</select>
 	<select id="findById" resultType="NoticeVO">
 		SELECT * FROM tbl_notice WHERE
+		n_code = #{n_code}
+	</select>
+	<select id="findByNcode" resultType="NoticeDTO">
+		SELECT * FROM view_nlist WHERE
 		n_code = #{n_code}
 	</select>
 	<select id="findByTitle" resultType="NoticeVO">
@@ -36,12 +44,10 @@
 	</insert>
 	<update id="update" parameterType="NoticeVO">
 		UPDATE tbl_notice SET
-		n_title =
-		#{n_title},
+		n_title = #{n_title},
 		n_content = #{n_content},
 		n_date = CURRENT_DATE(),
-		n_time =
-		CURRENT_TIME()
+		n_time = CURRENT_TIME()
 		WHERE n_code = #{n_code}
 	</update>
 	<update id="updateHit" parameterType="NoticeVO">

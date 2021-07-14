@@ -86,7 +86,7 @@ div.list_buttons button {
 					value="${NT.n_title}" />
 			</div>
 			<div>
-				<label>작성자</label><span class="nickname">관리자[Lv.1]</span>
+				<label>작성자</label><span class="nickname">${NT.n_nickname}</span>
 			</div>
 			<div">
 				<label></label>

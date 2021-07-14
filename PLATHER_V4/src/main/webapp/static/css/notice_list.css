@@ -63,7 +63,24 @@
 	margin-right: 135px;
 	float: right;
 }
+
 .no_result {
 	text-align: center;
 	margin: 20px;
+}
+
+button {
+	margin-left: auto;
+	padding: 10px 20px;
+	outline: 0;
+	border: 0;
+	background-color: #53734e;
+	color: white;
+	border-radius: 10px;
+	font-weight: 900;
+}
+
+button:hover {
+	box-shadow: 2px 2px 2px #e1e1e1;
+	cursor: pointer;
 }

@@ -35,7 +35,6 @@
 				</tr>
 			</table>
 		</div>
-	<%@include file="/WEB-INF/views/include/include_comment.jspf" %>
 	</div>
 	<%@include file="/WEB-INF/views/include/include_footer.jspf"%>
 </body>

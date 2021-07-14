@@ -22,7 +22,7 @@
 				</tr>
 				<tr>
 					<td colspan="3">${NT.n_hit}</td>
-					<td>${NT.n_mcode}</td>
+					<td>${NT.n_nickname}</td>
 				</tr>
 				<tr>
 					<td colspan="4"><p>${NT.n_content}</td>
@@ -50,7 +50,7 @@
 				location.href = "${rootPath}/notice/update?n_code=" + n_code
 			}
 			if(target.className.includes("tolist")){
-				location.href = "${rootPath}/notice"
+				window.history.back()
 			}
 			if(target.className.includes("delete")){
 				if(confirm("삭제하시겠습니까?")){

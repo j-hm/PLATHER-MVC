@@ -1,6 +1,6 @@
 package com.jhm.plather.dao;
 
-import com.jhm.plather.dao.GenericDao;
+import com.jhm.plather.model.MemberAndBoardDTO;
 import com.jhm.plather.model.MemberVO;
 
 public interface MemberDao extends GenericDao<MemberVO, String> {
@@ -13,4 +13,7 @@ public interface MemberDao extends GenericDao<MemberVO, String> {
 
 	// 닉네임 값으로 조회
 	public MemberVO findByNick(String m_nickname);
+	
+	// 특정 m_id가 작성한 게시글을 찾기
+		public MemberAndBoardDTO findByIdBoardResultMap(String m_id);
 }

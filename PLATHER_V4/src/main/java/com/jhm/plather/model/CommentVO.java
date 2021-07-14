@@ -17,4 +17,6 @@ public class CommentVO {
 	private String c_id;
 	private String c_comment;
 	private String c_date;
+	private String c_title;
+	private String c_singer;
 }

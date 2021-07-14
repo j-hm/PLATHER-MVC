@@ -6,20 +6,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+
 @Getter
 @Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class NoticeDTO {
-
-	private String n_code;
-	private String n_nickname;
-	private String n_title;
-	private String n_content;
-	private String n_date;
-	private String n_time;
-	private String n_mcode;
-	private String n_hit;
-
+public class SongVO {
+	private Long s_seq; // PK
+	private Long s_bcode; 
+	private String s_title;
+	private String s_singer;
 }

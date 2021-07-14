@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -14,7 +15,10 @@
 	<%@include file="/WEB-INF/views/include/include_header.jspf"%>
 	<div class="content">
 		<div class="play">
-			<div class="title"><p>플레이리스트</p><button class="btn_add">&#43; 등록</button></div>
+			<div class="title">
+				<p>플레이리스트</p>
+				<button class="btn_add">&#43; 등록</button>
+			</div>
 			<div class="select">
 				<select>
 					<option>조회순</option>
@@ -23,41 +27,45 @@
 			</div>
 			<table class="list">
 				<tr>
-					<th>글번호</th>
+					<th>No.</th>
+
 					<th>제목</th>
 					<th>작성자</th>
 					<th>등록일</th>
-					<th>조회수</th>
+
 				</tr>
-				<tr>
-					<td>2</td>
-					<td>배고플 때 들으면 더 배고픈 노래</td>
-					<td>먹짱</td>
-					<td>2021-06-12</td>
-					<td>11</td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>히스토리 psycho화자랑 레드벨벳 psycho화자에대해</td>
-					<td>14년도특기생</td>
-					<td>2021-06-12</td>
-					<td>27</td>
-				</tr>
+				<c:forEach items="${BOARDLIST}" var="B" varStatus="i">
+					<tr data-code="${B.b_code}">
+						<td>${i.index+1}</td>
+						<td>${B.b_title}</td>
+						<td>${B.b_id}</td>
+						<!-- view를 만들어서 작성자 이름받기(나중에 수정) -->
+						<td><fmt:formatDate pattern="yyyy-MM-dd" value="${B.b_date}" /></td>
+					</tr>
+
+				</c:forEach>
 			</table>
 		</div>
-		<div class="search">
-		<form>
-			<input/>
-			<button>검색</button>
-			</form>
-		</div>
+		<!-- 변수 바꿔야함 지금 주소도 변수도 공지사항의 것 -->
+		<%@include file="/WEB-INF/views/include/include_pagination.jspf"%>
+		<%@include file="/WEB-INF/views/include/include_search.jspf"%>
 	</div>
 	<%@include file="/WEB-INF/views/include/include_footer.jspf"%>
 </body>
 <script>
 	document.querySelector("button.btn_add").addEventListener("click",(e)=>{
-		location.href="${rootPath}/playlist/insert"
+		location.href="${rootPath}/board/insert"
 	})
+	document.querySelector("table.list").addEventListener("click",(e)=>{
+		let target =e.target;
+		let tagName = target.tagName;
+		if(tagName ==="TD"){
+			let b_code = e.target.closest("TR").dataset.code
+			//alert(b_code)
+			location.href="${rootPath}/board/detail?b_code="+b_code
+		}
+	})
+	
 	
 </script>
 </html>

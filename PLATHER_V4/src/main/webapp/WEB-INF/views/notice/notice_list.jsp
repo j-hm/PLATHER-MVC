@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Project PLATHER</title>
-<link href="${rootPath}/static/css/notice_list.css?ver=2021-07-04-001"
+<link href="${rootPath}/static/css/notice_list.css?ver=2021-07-14-001"
 	rel="stylesheet" />
 </head>
 <body>
@@ -45,8 +45,9 @@
 					</c:otherwise>
 				</c:choose>
 			</table>
+			<%@include file="/WEB-INF/views/include/include_pagination.jspf"%>
+			<%@include file="/WEB-INF/views/include/include_search.jspf"%>
 		</div>
-		<%@include file="/WEB-INF/views/include/include_search.jspf"%>
 	</div>
 	<%@include file="/WEB-INF/views/include/include_footer.jspf"%>
 </body>

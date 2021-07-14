@@ -16,11 +16,6 @@
 	font-family: 'GmarketSansLight';
 }
 
-body {
-	/* 배경 이미지 설정 */
-	background: url('${rootPath}/static/images/back.png') no-repeat;
-	background-size: 100% 100%;
-}
 
 div#font_box, form#login_form {
 	backdrop-filter: blur(8px);

@@ -150,7 +150,7 @@
 					// 만약 DB에 없는 회원이면
 					msg_error.innerText = " * 사용가능한 닉네임 입니다 *"
 					msg_error.classList.add("view")
-					input_nick.focus()
+					
 					return false
 				}
 				

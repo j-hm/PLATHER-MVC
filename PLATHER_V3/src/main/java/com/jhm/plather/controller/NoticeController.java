@@ -40,7 +40,7 @@ public class NoticeController {
 		if (intPageNum > 0) {
 			model.addAttribute("PAGE_NUM", intPageNum);
 		}
-		List<NoticeVO> pageList = nService.selectAllPage(intPageNum);
+		List<NoticeDTO> pageList = nService.selectAllPage(intPageNum);
 		model.addAttribute("NOTICES", pageList);
 
 		List<NoticeVO> nvList = nService.selectAll();
@@ -55,11 +55,11 @@ public class NoticeController {
 
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detail(String n_code, Model model) {
-		NoticeVO nVO = nService.findByNcode(n_code);
+		NoticeDTO nDTO = nDao.findByNcode(n_code);
 		nDao.updateHit(n_code);
 //		List<CommentDTO> comList = cDao.findByCbcode(n_code);
 //		model.addAttribute("COMS", comList);
-		model.addAttribute("NT", nVO);
+		model.addAttribute("NT", nDTO);
 		return "notice/notice_detail";
 	}
 
@@ -83,8 +83,8 @@ public class NoticeController {
 
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public String update(String n_code, Model model) {
-		NoticeVO nVO = nService.findByNcode(n_code);
-		model.addAttribute("NT", nVO);
+		NoticeDTO nDTO = nDao.findByNcode(n_code);
+		model.addAttribute("NT", nDTO);
 		return "notice/notice_input";
 	}
 

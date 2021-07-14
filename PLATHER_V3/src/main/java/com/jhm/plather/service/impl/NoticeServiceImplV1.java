@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.jhm.plather.dao.NoticeDao;
+import com.jhm.plather.model.NoticeDTO;
 import com.jhm.plather.model.NoticeVO;
 import com.jhm.plather.service.NoticeService;
 
@@ -42,20 +43,14 @@ public class NoticeServiceImplV1 implements NoticeService {
 		return 0;
 	}
 
-	@Override
-	public NoticeVO findByNcode(String n_code) {
-		// TODO Auto-generated method stub
-		NoticeVO nVO = nDao.findById(n_code);
-		return nVO;
-	}
 
 	@Override
-	public List<NoticeVO> selectAllPage(int pageNum) throws Exception {
-		List<NoticeVO> listAll = nDao.selectAll();
+	public List<NoticeDTO> selectAllPage(int pageNum) throws Exception {
+		List<NoticeDTO> listAll = nDao.selectAllView();
 
 		int start = (pageNum - 1) * 10;
 		int end = pageNum * 10;
-		List<NoticeVO> pageList = new ArrayList<NoticeVO>();
+		List<NoticeDTO> pageList = new ArrayList<NoticeDTO>();
 		for (int i = start; i < end; i++) {
 			pageList.add(listAll.get(i));
 		}

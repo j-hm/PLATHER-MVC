@@ -16,4 +16,9 @@ public interface NoticeDao extends GenericDao<NoticeVO, String> {
 	public List<NoticeVO> findByNick(String text);
 
 	public List<NoticeVO> findByContent(String text);
+
+	public List<NoticeDTO> selectAllView();
+	
+	public NoticeDTO findByNcode(String n_code);
+
 }

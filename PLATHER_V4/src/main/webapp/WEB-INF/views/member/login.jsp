@@ -7,19 +7,26 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-<link href="${rootPath}/static/css/login.css?ver=2021-07-12-003" rel="stylesheet" />
-
+<link href="${rootPath}/static/css/login.css?ver=2021-07-13-001"
+	rel="stylesheet" />
+<style>
+body {
+	/* 배경 이미지 설정 */
+	background: url("${rootPath}/static/images/back.png") no-repeat;
+	background-size: 100% 100%;
+}
+</style>
 </head>
-
 <body>
+
 	<div id="font_box">
-		<span>sing up</span>
+		<span>sign up</span>
 		<p>welcome!</p>
 	</div>
 
 	<div class="login error"></div>
 
-	<form id="login_form" method="POST">
+	<form id="login_form" method="POST" action="${rootPath}/">
 		<h1>PLATHER</h1>
 
 		<div id="name_box">

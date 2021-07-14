@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Project PLATHER</title>
-<link href="${rootPath}/static/css/notice_list.css?ver=2021-07-12-001"
+<link href="${rootPath}/static/css/notice_list.css?ver=2021-07-14-001"
 	rel="stylesheet" />
 </head>
 <body>
@@ -43,8 +43,8 @@
 					</c:otherwise>
 				</c:choose>
 			</table>
+			<button class="tolist">뒤로가기</button>
 		</div>
-		<button class="tolist">뒤로가기</button>
 	</div>
 	<%@include file="/WEB-INF/views/include/include_footer.jspf"%>
 </body>

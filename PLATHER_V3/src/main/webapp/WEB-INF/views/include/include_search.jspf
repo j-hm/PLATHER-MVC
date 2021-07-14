@@ -5,6 +5,28 @@
 	padding-right: 135px;
 	float: right;
 }
+
+.search input, .search select {
+	background-color: #f3f0d7;
+	height: 25x;
+	border-radius: 8px;
+	border: none;
+	margin-top: 15px;
+	padding: 5px 15px;
+	text-align: center;
+}
+
+.search input:focus, .search select:focus {
+	outline: none;
+}
+
+button.btn_search {
+	background-color: #91c788;
+	padding: 3px 5px;
+	border-radius: 5px;
+	margin-left: 10px;
+	border: 0px;
+}
 </style>
 <div class="search">
 	<form>
@@ -12,7 +34,8 @@
 			<option value="NICK">작성자</option>
 			<option value="TITLE">제목</option>
 			<option value="CONTENT">내용</option>
-		</select> <input name="text" />
+		</select> 
+		<input name="text" placeholder="search" />
 		<button type="button" class="btn_search">검색</button>
 	</form>
 </div>

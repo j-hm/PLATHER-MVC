@@ -15,7 +15,10 @@
 	<%@include file="/WEB-INF/views/include/include_header.jspf"%>
 	<div class="content">
 		<div class="play">
-			<div class="title"><p>플레이리스트</p><button class="btn_add">&#43; 등록</button></div>
+			<div class="title">
+				<p>플레이리스트</p>
+				<button class="btn_add">&#43; 등록</button>
+			</div>
 			<div class="select">
 				<select>
 					<option>조회순</option>
@@ -25,30 +28,27 @@
 			<table class="list">
 				<tr>
 					<th>No.</th>
-					
+
 					<th>제목</th>
 					<th>작성자</th>
 					<th>등록일</th>
-					
+
 				</tr>
 				<c:forEach items="${BOARDLIST}" var="B" varStatus="i">
-				<tr data-code="${B.b_code}">
-				<td>${i.index+1}</td>
-				<td>${B.b_title}</td>
-				<td>${B.b_id}</td><!-- view를 만들어서 작성자 이름받기(나중에 수정) -->
-				<td><fmt:formatDate pattern="yyyy-MM-dd" 
-                                value="${B.b_date}"/></td>
-				</tr>
-				
+					<tr data-code="${B.b_code}">
+						<td>${i.index+1}</td>
+						<td>${B.b_title}</td>
+						<td>${B.b_id}</td>
+						<!-- view를 만들어서 작성자 이름받기(나중에 수정) -->
+						<td><fmt:formatDate pattern="yyyy-MM-dd" value="${B.b_date}" /></td>
+					</tr>
+
 				</c:forEach>
 			</table>
 		</div>
-		<div class="search">
-		<form>
-			<input/>
-			<button>검색</button>
-			</form>
-		</div>
+		<!-- 변수 바꿔야함 지금 주소도 변수도 공지사항의 것 -->
+		<%@include file="/WEB-INF/views/include/include_pagination.jspf"%>
+		<%@include file="/WEB-INF/views/include/include_search.jspf"%>
 	</div>
 	<%@include file="/WEB-INF/views/include/include_footer.jspf"%>
 </body>
