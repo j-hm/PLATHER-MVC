@@ -1,19 +1,24 @@
 package com.jhm.plather.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jhm.plather.dao.CommentDao;
 import com.jhm.plather.model.BoardAndSongDTO;
 import com.jhm.plather.model.BoardVO;
-import com.jhm.plather.model.CommentDTO;
+import com.jhm.plather.model.LikeVO;
+import com.jhm.plather.model.MemberVO;
 import com.jhm.plather.model.SongVO;
 import com.jhm.plather.service.BoardService;
 import com.jhm.plather.service.MemberService;
@@ -45,40 +50,55 @@ public class BoardController {
 	}
 
 	@ResponseBody
-	// 게시물 등록 우선 임시로
+	//////////////////////// 게시물 등록 //////////////////////////////
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String boardInsert(@RequestBody Map<String, Object> bsMaps) {
 
 		log.debug("bsMaps: {}", bsMaps.toString());
+
 		BoardVO boardVO = new BoardVO();
 		boardVO.setB_title((String) bsMaps.get("b_title"));
 		boardVO.setB_content((String) bsMaps.get("b_content"));
+		boardVO.setB_id((String) bsMaps.get("b_id"));
+		boardVO.setB_nick((String) bsMaps.get("b_nick"));
+		log.debug("00>>:{}", boardVO.toString());
 
 		List<SongVO> songList = (List<SongVO>) bsMaps.get("playList");
 		log.debug("Song List {}", songList.toString());
+
+		// 게시물과 노래 리스트를 같이 등록 하였을 때 결과
 		int ret = bSer.register(boardVO, songList);
 		if (ret > 0) {
+			// tbl_board와 tbl_song 모두 insert성공
+
 			return "OK";
 		} else {
 			return "FAIL";
 		}
 
-		// List<SongVO> playList = null;
-		// bSer.register(boardVO,playList);
-
-//		 return "redirect:/board";
 	}
 
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
-	public String detail(Long b_code, Model model) {
+	public String detail(Long b_code, HttpSession session, Model model) {
 		// 게시물 코드를 받아와 게시글 불러오기
 
+		bSer.updateHit(b_code);
 		BoardAndSongDTO bsDTO = bSer.findByIdWithList(b_code);
+
+		// log.debug("->>> {}",bsDTO.toString());
+		LikeVO likeVO = new LikeVO();
+		MemberVO memberVO = (MemberVO) session.getAttribute("MEMBER");
+		// debug("->>>vo {}",memberVO.toString());
+		// String l_id = memberVO.getM_id();
+		likeVO.setL_bcode(bsDTO.getB_code());
+		likeVO.setL_id(memberVO.getM_id());
+		// log.debug("boardController에 likeVo setting : {} ",likeVO.toString());
+		int checkLike = bSer.checkLike(likeVO);
+		// log.debug("checklike :{}",checkLike);
+
+		model.addAttribute("LIKE", checkLike);
 		model.addAttribute("BOARD_DETAIL", bsDTO);
-		
-		// 코멘트 리스트!!
-		List<CommentDTO> comList = cDao.findByCbcode(b_code);
-		model.addAttribute("COMS", comList);
+
 		return "playlist/play_detail";
 
 	}
@@ -107,5 +127,26 @@ public class BoardController {
 		bSer.delete(b_code);
 		return "redirect:/board";
 	}
+	@ResponseBody
+	@RequestMapping(value = "/like", method = RequestMethod.GET, produces = "application/json;char=UTF8")
+	public Map<String, Integer> clickHeart(@RequestParam("l_id") String l_id, @RequestParam("l_bcode") Long l_bcode) {
+		
+		Map<String, Integer>checkMap = new HashMap<>();
+		LikeVO likeVO = new LikeVO();
+		likeVO.setL_bcode(l_bcode);
+		likeVO.setL_id(l_id);
+		log.debug(" like : likeVO : {}", likeVO);
+		Integer result = bSer.clickHeart(likeVO);
+		log.debug("return 값 : " + result);
+		if (result != null) {
+			checkMap.put("result", result);
+			Integer likeCnt = bSer.showLikeCnt(l_bcode);
+			checkMap.put("likeCnt", likeCnt);
 
+		} else {
+			checkMap.put("result", 0);
+
+		}
+		return checkMap;
+	}
 }

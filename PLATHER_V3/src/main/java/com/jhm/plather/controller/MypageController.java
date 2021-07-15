@@ -1,13 +1,21 @@
 package com.jhm.plather.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.jhm.plather.model.BoardVO;
+import com.jhm.plather.model.CommentDTO;
+import com.jhm.plather.model.MemberAndBoardDTO;
 import com.jhm.plather.model.MemberVO;
+import com.jhm.plather.service.BoardService;
+import com.jhm.plather.service.CommentService;
 import com.jhm.plather.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
@@ -20,6 +28,8 @@ import lombok.extern.slf4j.Slf4j;
 public class MypageController {
 
 	protected final MemberService mbService;
+	protected final CommentService cService;
+	protected final BoardService bService;
 
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
 	public String list() {
@@ -55,5 +65,32 @@ public class MypageController {
 		model.addAttribute("MDETAIL", mbVO);
 
 		return "redirect:/main";
+	}
+	@ResponseBody
+	@RequestMapping(value = "/myboard", method = RequestMethod.GET, produces = "application/json;char=UTF8")
+	public MemberAndBoardDTO myBoard(String m_id) {
+		//mypage에서 내가 쓴글을 누를 때 게시글보여줌 
+		MemberAndBoardDTO mbDTO = mbService.findByIdBaord(m_id);
+		log.debug("mbDTO: {}", mbDTO);
+		return mbDTO;
+
+	}
+	@ResponseBody
+	@RequestMapping(value = "/mycomment", method = RequestMethod.GET, produces = "application/json;char=UTF8")
+	public List<CommentDTO> myComment(String m_id) {
+		//mypage에서 내가 쓴 댓글을 누를 때 댓글보여줌 
+		List<CommentDTO> cList = cService.findByMemberId(m_id);
+		log.debug("cDTO: {}", cList);
+		return cList;
+
+	}
+	@ResponseBody
+	@RequestMapping(value = "/mylike", method = RequestMethod.GET, produces = "application/json;char=UTF8")
+	public List<BoardVO> myLike(String m_id) {
+		
+		List<BoardVO> boardList = bService.myLikeBoard(m_id);
+		log.debug("mylike boardlist : {} ", boardList);
+		return boardList;
+
 	}
 }

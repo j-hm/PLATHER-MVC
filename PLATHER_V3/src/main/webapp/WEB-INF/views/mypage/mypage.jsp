@@ -9,12 +9,46 @@
 <link href="${rootPath}/static/css/mypage.css?ver=3" rel="stylesheet" />
 <title>My Page</title>
 <style>
-div#table {
-	
-}
-
 div.hidden {
 	display: none;
+}
+
+div#table {
+	height: 350px;
+	overflow-y: scroll;
+}
+
+table {
+	border-collapse: separate;
+	border-spacing: 1px;
+	text-align: left;
+	line-height: 1.5;
+	border-top: 1px solid #ccc;
+	margin: 0px auto;
+	width: 70%;
+}
+
+tbody.tbody tr:hover {
+	cursor: pointer;
+	font-weight: 900;
+	background-color: rgba(145, 199, 136, 0.3);
+}
+
+th {
+	background-color: #e1e1e1;
+	text-align: center;
+	width: 150px;
+	padding: 10px;
+	font-weight: bold;
+	border-bottom: 1px solid #ccc;
+}
+
+table td {
+	text-align: center;
+	width: 350px;
+	padding: 10px;
+	vertical-align: top;
+	border-bottom: 1px solid #ccc;
 }
 </style>
 </head>
@@ -29,7 +63,7 @@ div.hidden {
 					<h5>${MEMBER.m_nickname}</h5>
 					<div class="line"></div>
 				</div>
-				<p class="id">yub</p>
+				<p class="id">${MEMBER.m_id}</p>
 				<div class="buttons">
 					<button class="modify">정보수정</button>
 
@@ -46,37 +80,28 @@ div.hidden {
 						<div class="count">?건</div>
 					</li>
 					<li class="heart box">
-						<div class="b-title">찜한 PlayList</div>
+						<div class="b-title">찜한 글</div>
 						<div class="count">?건</div>
 					</li>
 				</ul>
+				<div id="table" class="hidden">
+					<table>
+						<thead>
+							<tr>
+								<th class="th_1"></th>
+								<th class="th_2"></th>
+								<th class="th_3"></th>
+							</tr>
+						</thead>
+						<tbody class="tbody">
 
-				<div class="search_container">
-					<form>
-						<p>
-							<input placeholder="search"> <img class="search_icon"
-								src="${rootPath}/static/images/loupe.png" />
-							<button class="btn_search">검색</button>
-						</p>
-						<div class="table"></div>
-					</form>
+						</tbody>
+					</table>
 				</div>
+
 			</div>
 		</div>
-		<div id="table" class="hidden">
-			<table>
-				<thead>
-					<tr>
-						<th class="th_1"></th>
-						<th class="th_2"></th>
-						<th class="th_3"></th>
-					</tr>
-				</thead>
-				<tbody class="tbody">
 
-				</tbody>
-			</table>
-		</div>
 	</div>
 	<%@include file="/WEB-INF/views/include/include_footer.jspf"%>
 </body>
@@ -95,7 +120,7 @@ div.hidden {
 	
 	
 //정보수정버튼을 click 하면 정보수정하는 페이지로 이동
-// (member/update로 변경할 예정)
+
 	document.querySelector("button.modify").addEventListener("click",(e)=>{
 		location.href="${rootPath}/mypage/update"
 	})
@@ -109,19 +134,25 @@ div.hidden {
 		day = day >= 10 ? day : '0' + day;
 		return year + '-' + month + '-' +day;
 	}
+	//table header 
+	const table_header=(th1,th2 ,th3)=>{
+		
+		th_1.innerText=th1
+		th_2.innerText=th2
+		th_3.innerText=th3
+		
+	}
 	
 	//게시글 테이블 생성 function
 	const create_board_table=()=>{
-		if(boardList.length>0){
+		
 		div_table.classList.remove("hidden")
-		th_1.innerText="글코드"
-		th_2.innerText="글제목"
-		th_3.innerText="작성일"
+		table_header("글코드","글제목","작성일")
 		let html = "";
 		for(let i = 0 ; i <boardList.length ; i++){
 			date= boardList[i].b_date
 			console.log(date)
-			html += "<tr>"
+			html += "<tr data-code="+boardList[i].b_code+ ">"
 				html += "<td>"+boardList[i].b_code + "</td>"
 				html += "<td>"+boardList[i].b_title + "</td>"
 				html += "<td>"+ dateFormat(date) + "</td>"
@@ -129,7 +160,7 @@ div.hidden {
 		}
 		document.querySelector("tbody.tbody").innerHTML = html
 	}
-}
+	
 
 	// 내가 쓴 글을 찾아서 테이블로 보여주는 function
 	const show_my_board=()=>{
@@ -142,7 +173,12 @@ div.hidden {
 			console.log(data)
 			console.log(boardList)
 			// 테이블 생성
+			if(boardList.length>0){
 			create_board_table()
+			}else{
+				alert("작성한 글이 없습니다.")
+			}
+				
 		})
 	}
 	// 내가 쓴 댓글을 찾아서 테이블을 만들어 보여주는 function
@@ -154,23 +190,45 @@ div.hidden {
 			console.log(data)
 			if(data.length>0){
 				div_table.classList.remove("hidden")
-				th_1.innerText="게시글코드"
-				th_2.innerText="댓글내용"
-				th_3.innerText="작성일"
+				table_header("게시글코드","댓글내용","작성일")
 				let html = "";
 				for(let i = 0 ; i < data.length ; i++){
-					html += "<tr>"
+					html += "<tr data-code="+data[i].c_bcode +">"
 						html += "<td>"+data[i].c_bcode + "</td>"
 						html += "<td>"+data[i].c_comment + "</td>"
 						html += "<td>"+ data[i].c_date+ "</td>"
 						html += "</tr>"
 				}
 				document.querySelector("tbody.tbody").innerHTML = html
+			}else{
+				alert("작성한 댓글이 없습니다.")
 			}
 			
 		})
 	}
-
+	// 찜한 글 박스를 클릭할때 function
+	const show_my_like=()=>{
+		fetch("${rootPath}/mypage/mylike?m_id="+m_id)
+		.then(response=>response.json()).then((data)=>{
+			console.log(data)
+			if(data.length>0){
+				div_table.classList.remove("hidden")
+				table_header("게시글코드","글제목","찜한 수")
+				let html = "";
+				for(let i = 0 ; i < data.length ; i++){
+					html += "<tr data-code="+data[i].b_code +">"
+						html += "<td>"+data[i].b_code + "</td>"
+						html += "<td>"+data[i].b_title + "</td>"
+						html += "<td>"+ data[i].b_like+ "</td>"
+						html += "</tr>"
+				}
+				document.querySelector("tbody.tbody").innerHTML = html
+			}
+			else{
+				alert("찜한 게시물이 없습니다.")
+			}
+		})
+	}
 	// "내가 쓴 글"이라는 박스를 클릭할 때 이벤트 
 	my_board.addEventListener("click",()=>{
 		//alert(m_id)
@@ -181,5 +239,18 @@ div.hidden {
 	my_comment.addEventListener("click",()=>{
 		show_my_comment()
 	})
+	//" 찜한 글"라는 박스를 클릭할 때 이벤트 
+	my_like.addEventListener("click",()=>{
+	show_my_like()
+	})
+	// 내가 쓴글에서 클릭하면 디테일로 가는 이벤트
+	tbody.addEventListener("click",(e)=>{
+		if(e.target.tagName ==="TD"){
+			const b_code = e.target.closest("TR").dataset.code
+			//alert(b_code)
+			if(b_code)
+			location.href="${rootPath}/board/detail?b_code="+b_code
+		}
+	})	
 </script>
 </html>

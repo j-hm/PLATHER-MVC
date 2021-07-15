@@ -1,5 +1,6 @@
 package com.jhm.plather.model;
 
+
 import java.util.List;
 
 import lombok.AllArgsConstructor;

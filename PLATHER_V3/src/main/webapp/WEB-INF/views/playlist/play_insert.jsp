@@ -36,7 +36,12 @@ input {
 	height: 30px;
 	outline: 0;
 }
-
+input.nickname {
+	border: 1px solid transparent;
+}
+div.div_content{
+	display: flex;
+}
 textarea {
 	width: 70%;
 	margin-left: 4px;
@@ -58,6 +63,7 @@ button:hover {
 	text-align: right;
 	padding: 20px;
 	margin-right: 7%;
+	width: 100%;
 	
 }
 div.list_buttons button {
@@ -90,7 +96,7 @@ legend {
 }
 div.add_buttons {
 	text-align: right;
-	margin-right: 30px;
+	padding-right: 10px;
 }
 
 .add_buttons button {
@@ -122,6 +128,10 @@ div.visibility {
 	height: 350px;
 	white-space: nowrap;
 }
+div#table{
+	height: 350px;
+	overflow-y: scroll;
+}
 
 table {
 	border-collapse: separate;
@@ -131,6 +141,7 @@ table {
 	border-top: 1px solid #ccc;
 	margin: 0px auto;
 	width: 70%;
+	
 }
 
 th {
@@ -160,19 +171,24 @@ table td {
 			<div class="div_list_title">
 				<label class="label_title">플레이리스트 제목</label> <input name="b_title"
 					class="content i_title" placeholder="PlayList Title" />
+					
 			</div>
 			<div class="div_name">
-				<label class="lable_name">작성자</label><input class="nickname"
-					value="작성자" readonly="readonly">
+				<label class="lable_name">작성자</label><input 
+				class="nickname" name="b_nick"
+					value="${MEMBER.m_nickname}" readonly="readonly">
+					<input 
+				class="memberid" name="b_id"
+					value="${MEMBER.m_id}" type="hidden">
 			</div>
 			<div class="div_content">
 				<label class="lable_content">내용</label>
 				<textarea name="b_content" class="content" cols="50" rows="4"></textarea>
 			</div>
 			<div class="list_buttons">
-				<button type="button" class="btn_playlist btn">플레이리스트 만들기</button>
+				<button type="button" class="btn_playlist btn">📄 플레이리스트 만들기</button>
 				<button type="button" class="btn_register btn">💾 등록</button>
-				<button type="button" class="btn_list btn">📄 목록으로</button>
+				<button type="button" class="btn_list btn">⬅ 목록으로</button>
 			</div>
 		</form>
 	</div>
@@ -190,7 +206,7 @@ table td {
 			</div>
 			<div class="add_buttons">
 				<button type="button" class="btn_add btn">➕ 추가</button>
-				<button type="button" class="btn_complete btn">완료</button>
+				<button type="button" class="btn_complete btn">👍 완료</button>
 			</div>
 		</fieldset>
 		<div id="table" class="visibility">
@@ -206,7 +222,7 @@ table td {
 			</table>
 		</div>
 	</div>
-
+<%@include file="/WEB-INF/views/include/include_footer.jspf"%>
 </body>
 <script>
 // 변수 생성
@@ -221,10 +237,16 @@ table td {
 	const i_board_title =doc.querySelector("input.i_title.content")
 	const content =doc.querySelector("textarea.content")
 	const modal = doc.querySelector("#modal")
+	const div_table =document.querySelector("#table")
+	const tbody = document.querySelector(".tbody")
+	
+	
 	//플레이리스트 변수 생성
 	let playList = new Array(); 
 	let board = new Object();
+	let row = 0;
 	
+	alert(doc.querySelector("input.memberid").value)
 	//노래추가할때 빈문자열 확인하고 리스트에 추가하는 function
 	const add_list=()=>{
 		let s_title = i_song_title.value
@@ -243,21 +265,23 @@ table td {
 		}
 		play.s_title = s_title;
 		play.s_singer = s_singer;
+		play.s_row = row
 		console.log(play);
 		// playList에 추가 
 		playList.push(play);
 		console.log(playList)
 		create_table();
+		row++
+	
 	}
 	// 플레이 리스트 테이블 생성하는 function
 	const create_table = ()=>{
-		const div_table =document.querySelector("#table")
-		const tbody = document.querySelector(".tbody")
+		
 		if(playList.length>0){
 			div_table.classList.remove("visibility")
 			let html = "";
 			for(let i = 0 ; i <playList.length ; i++){
-				html += "<tr>"
+				html += "<tr data-row="+ playList[i].s_row +">"
 				html += "<td>"+playList[i].s_title + "</td>"
 				html += "<td>"+playList[i].s_singer + "</td>"
 				html += "</tr>"
@@ -282,6 +306,8 @@ table td {
 		
 		board.b_title = b_title
 		board.b_content = b_content
+		board.b_id= doc.querySelector("input.memberid").value
+		board.b_nick=doc.querySelector("input.nickname").value
 		board.playList =playList
 		console.log(board)
 		
@@ -299,10 +325,36 @@ table td {
 		i_song_title.focus();
 	
 	})
+	// 노래 추가에서 특정 테이블 로우를 클릭하면 나타나는  event
+	tbody.addEventListener("click",(e)=>{
+		const tag = e.target.tagName;
+		if(tag === "TD"){
+			const t_row = e.target.closest("TR").dataset.row
+			 alert (t_row)
+			
+			console.table(playList)
+			
+			//playList = playList.filter(play=>{
+			//	console.log(play);
+			//	 console.log("s_row:",play.s_row,"row:",row, play.s_row == row)
+			//	return play.s_row != row
+			//})
+			//row : 클릭한곳의 tr의 data-row
+			// play.s_row 가 클릭한 row가 아닌 값만 걸러 playList로 저장
+			playList = playList.filter(play=>play.s_row != t_row)
+			
+			// console.log("새로만든 playList")
+			// console.table(playList)
+			e.target.closest("TR").remove()
+		}
+	})
+	
 	// 리스트 추가하고 완료버튼 클릭할 때 나타나는 event
 	btn_complete.addEventListener("click",()=>{
 		modal.classList.add("hidden")
 	})
+
+	
 	// 게시물 등록을 클릭할 때 나타나는 event
 	btn_register.addEventListener("click",()=>{
 		if(playList.length<3){
@@ -323,8 +375,8 @@ table td {
 				} else {
 					alert("추가 실패")
 				}
-			})//.then(location.href="${rootPath}/board")
-			}
+			})
+		}//else
 		})
 	// 목록으로 버튼을 클릭할 때 나타나는 event
 	btn_list.addEventListener("click",()=>{

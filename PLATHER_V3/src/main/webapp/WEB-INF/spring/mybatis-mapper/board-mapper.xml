@@ -7,6 +7,7 @@
 
 <select id="selectAll" resultType="BoardVO">
 	SELECT * FROM tbl_board
+	ORDER BY b_date DESC
 </select>
 
 <!--  게시물만 조회 -->
@@ -27,6 +28,11 @@
 <select id="findByUserId" resultType="BoardVO" parameterType="String">
 	SELECT * FROM tbl_song WHERE b_id =#{b_id}
 </select>
+
+<!-- b_like (likecount리턴) -->
+<select id="showLikeCnt" resultType="int" 	parameterType="Long">
+		SELECT b_like FROM tbl_board WHERE b_code = #{b_code}
+	</select>
 
 
 <insert id="insert" parameterType="BoardVO">
@@ -71,6 +77,29 @@
 	b_content = #{b_content}
 	WHERE b_code = #{b_code}
 </update>
+
+<!-- 조회수  -->
+<update id="updateHit" parameterType="BoardVO">
+		UPDATE tbl_board SET
+		b_hit
+		=
+		b_hit + 1
+		WHERE b_code = #{b_code}
+	</update>
+	
+<!-- 좋아요 up -->
+	<update id="likeCountUp" parameterType="Long">
+	UPDATE tbl_board SET 
+	b_like = b_like+1
+	WHERE b_code = #{b_code}
+	</update>
+<!-- 좋아요 down  -->	
+	<update id="likeCountDown" parameterType="Long">
+	UPDATE tbl_board SET 
+	b_like = b_like -1
+	WHERE b_code = #{b_code}
+	</update>
+
 <delete id="delete" >
 	DELETE FROM tbl_board where b_code = #{b_code}
 </delete>

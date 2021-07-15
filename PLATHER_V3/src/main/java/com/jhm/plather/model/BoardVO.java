@@ -21,7 +21,8 @@ public class BoardVO {
 		private Date b_date; 
 		private Date b_moddate;
 		private String b_id;
-		private int b_hit;// auto
-		private int b_like;
+		private String b_nick;
+		private int b_hit;
+		private int b_like; // like count
 	}
 

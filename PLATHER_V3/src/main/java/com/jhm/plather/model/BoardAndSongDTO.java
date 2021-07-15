@@ -25,6 +25,7 @@ public class BoardAndSongDTO {
 	private Date b_date;  
 	private Date b_moddate;
 	private String b_id; 
+	private String b_nick;
 	private String b_hit;
 	private String b_like;
 	private List<SongVO> playList;
