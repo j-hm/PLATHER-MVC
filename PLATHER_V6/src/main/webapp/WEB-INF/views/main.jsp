@@ -49,17 +49,28 @@ article#bn3 {
 					</c:choose>
 				</table>
 			</div>
-			<div>
+			<div id="btable">
 				<h2>최근 플래더</h2>
 				<table>
 					<tr>
 						<th>제목</th>
 						<th>작성일</th>
 					</tr>
-					<tr>
-						<td>*여름에 필청* 체감온도 -5도 플레이리스트</td>
-						<td>2021-06-10</td>
-					</tr>
+					<c:choose>
+						<c:when test="${empty BDLIST}">
+							<tr>
+								<td colspan="2">데이터 없음</td>
+							</tr>
+						</c:when>
+						<c:otherwise>
+							<c:forEach var="i" begin="0" end="4">
+								<tr id="highlight" data-bcode="${BDLIST[i].b_code}">
+									<td>${BDLIST[i].b_title}</td>
+									<td>${BDLIST[i].b_date}</td>
+								</tr>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
 				</table>
 			</div>
 		</article>
@@ -74,6 +85,14 @@ document.querySelector("div#ntable").addEventListener("click",(e)=>{
 		let tr = e.target.closest("TR")
 		let n_code = tr.dataset.ncode
 		location.href="${rootPath}/notice/detail?n_code=" + n_code
+	}
+})
+document.querySelector("div#btable").addEventListener("click",(e)=>{
+	let tagName = e.target.tagName
+	if(tagName === "TD"){
+		let tr = e.target.closest("TR")
+		let b_code = tr.dataset.bcode
+		location.href="${rootPath}/board/detail?b_code=" + b_code
 	}
 })
 </script>

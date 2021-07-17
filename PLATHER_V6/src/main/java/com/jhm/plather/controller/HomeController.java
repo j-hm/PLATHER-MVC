@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.jhm.plather.dao.BoardDao;
+import com.jhm.plather.model.BoardVO;
 import com.jhm.plather.model.MemberVO;
 import com.jhm.plather.model.NoticeDTO;
 import com.jhm.plather.model.NoticeVO;
@@ -26,6 +28,7 @@ public class HomeController {
 
 	protected final NoticeService nService;
 	protected final MemberService mbService;
+	protected final BoardDao bDao;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String login(Model model) {
@@ -75,6 +78,9 @@ public class HomeController {
 
 		List<NoticeVO> ntList = nService.selectAll();
 		model.addAttribute("NTLIST", ntList);
+		
+		List<BoardVO> bdList = bDao.selectAll();
+		model.addAttribute("BDLIST", bdList);
 		return "main";
 	}
 
