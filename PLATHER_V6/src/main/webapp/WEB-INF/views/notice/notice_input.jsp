@@ -88,7 +88,7 @@ div.list_buttons button {
 			<div>
 				<label>작성자</label><span class="nickname">${NT.n_nickname}</span>
 			</div>
-			<div>
+			<div">
 				<label></label>
 				<textarea id="n_content" name="n_content" cols="50" rows="10"
 					placeholder="내용을 입력하세요">${NT.n_content}</textarea>
