@@ -43,15 +43,21 @@ public class NoticeServiceImplV1 implements NoticeService {
 		return 0;
 	}
 
-
 	@Override
 	public List<NoticeDTO> selectAllPage(int pageNum) throws Exception {
 		List<NoticeDTO> listAll = nDao.selectAllView();
-
+		int lSize = listAll.size();
 		int start = (pageNum - 1) * 10;
 		int end = pageNum * 10;
+		int endList = 0;
+		if(lSize < end) {
+			endList = lSize;
+		} else {
+			endList = end;
+		}
+		
 		List<NoticeDTO> pageList = new ArrayList<NoticeDTO>();
-		for (int i = start; i < end; i++) {
+		for (int i = start; i < endList; i++) {
 			pageList.add(listAll.get(i));
 		}
 		log.debug(pageList.toString());

@@ -28,7 +28,7 @@
 					<td colspan="4"><p>${NT.n_content}</td>
 				</tr>
 				<tr id="btn_box">
-					<td>💗</td>
+					<td></td>
 					<td><button class="tolist">뒤로가기</button></td>
 					<td><button class="update">수정</button></td>
 					<td><button class="delete">삭제</button></td>

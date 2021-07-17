@@ -51,7 +51,7 @@
 					
 				} else if(menu.id === "login") {
 					
-					location.href = "${rootPath}/member/login"
+					location.href = "${rootPath}/"
 					
 				} else if(menu.id === "logout") {
 					location.href = "${rootPath}/member/logout"
