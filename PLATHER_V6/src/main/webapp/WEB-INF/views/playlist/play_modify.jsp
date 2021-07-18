@@ -21,22 +21,19 @@
 				<tr>
 					<th colspan="3"><input name="b_title" 
 					value="${BOARD_DETAIL.b_title}"/></th>
-					<th><input readonly="readonly" value='<fmt:formatDate pattern="yyyy-MM-dd"  value="${BOARD_DETAIL.b_date}"/>'/>
+					<th><input class="read" readonly="readonly" value='<fmt:formatDate pattern="yyyy-MM-dd"  value="${BOARD_DETAIL.b_date}"/>'/>
 					</th>
 				</tr>
 				<tr>
 					<td colspan="3">조회수 14</td>
-					<td><input name="b_id" value="${BOARD_DETAIL.b_id}"/></td>
+					<td><input class="read" readonly="readonly" name="b_nick" value="${BOARD_DETAIL.b_nick}"/></td>
 				</tr>
 				<tr>
 					<td colspan="4">
         				<textarea name="b_content" cols="50" rows="4" >${BOARD_DETAIL.b_content}</textarea>
-						
 					</td>
-				</tr>
-				<tr>
-					<td>💗</td>
 					<td><input name="b_code" value="${BOARD_DETAIL.b_code}" type="hidden"/></td>
+						
 				</tr>
 			</table>
 			<div class="div_button">

@@ -210,6 +210,7 @@ table td {
 			</div>
 		</fieldset>
 		<div id="table" class="visibility">
+			<p>* 리스트에서 삭제는 해당 부분 클릭 *</p>
 			<table>
 				<thead>
 					<tr>
@@ -246,7 +247,6 @@ table td {
 	let board = new Object();
 	let row = 0;
 	
-	alert(doc.querySelector("input.memberid").value)
 	//노래추가할때 빈문자열 확인하고 리스트에 추가하는 function
 	const add_list=()=>{
 		let s_title = i_song_title.value
@@ -289,6 +289,7 @@ table td {
 		document.querySelector("tbody.tbody").innerHTML = html
 		}
 	}
+	
 	const register_board=() => {
 		const b_title = i_board_title.value
 		const b_content= content.value
@@ -309,7 +310,6 @@ table td {
 		board.b_id= doc.querySelector("input.memberid").value
 		board.b_nick=doc.querySelector("input.nickname").value
 		board.playList =playList
-		console.log(board)
 		
 	}
 	// 플레이리스트 만들기 클릭할 때 나타나는 event
@@ -330,7 +330,6 @@ table td {
 		const tag = e.target.tagName;
 		if(tag === "TD"){
 			const t_row = e.target.closest("TR").dataset.row
-			 alert (t_row)
 			
 			console.table(playList)
 			
@@ -362,7 +361,7 @@ table td {
 			i_song_title.focus()
 			return false
 		}else{
-			register_board()
+			register_board();
 			let JsonString = JSON.stringify(board)
 			console.log(JsonString)
 			fetch("${rootPath}/board/insert",{method : "POST",body:JsonString,

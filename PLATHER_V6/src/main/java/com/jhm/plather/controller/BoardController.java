@@ -37,16 +37,24 @@ public class BoardController {
 	protected final MemberService mSer;
 	protected final CommentDao cDao;
 
-	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
-	public String list(Model model) {
-		List<BoardVO> bList = bSer.selectAll();
-		model.addAttribute("BOARDLIST", bList);
+	@RequestMapping(value = {"/",""}, method = RequestMethod.GET)
+	public String list(@RequestParam(value="category",required = false, defaultValue = "cat_date")String category
+	,@RequestParam(value = "pageNum", required = false, defaultValue = "1") String pageNum,
+	Model model) {
+		
+		int intPageNum = Integer.valueOf(pageNum);
+		if(intPageNum > 0) {
+			model.addAttribute("PAGE_NUM", intPageNum);
+		}
+		bSer.selectByCategory(category, model,intPageNum);
+		
 		return "playlist/play_list";
 	}
 
+
 	@RequestMapping(value = "/insert", method = RequestMethod.GET)
 	public String boarInsert(Model model) {
-		mSer.findByIdBaord("yub");
+		
 		return "playlist/play_insert";
 	}
 
@@ -85,19 +93,8 @@ public class BoardController {
 
 		bSer.updateHit(b_code);
 		BoardAndSongDTO bsDTO = bSer.findByIdWithList(b_code);
-
-		// log.debug("->>> {}",bsDTO.toString());
-		LikeVO likeVO = new LikeVO();
-		MemberVO memberVO = (MemberVO) session.getAttribute("MEMBER");
-		// debug("->>>vo {}",memberVO.toString());
-		// String l_id = memberVO.getM_id();
-		likeVO.setL_bcode(bsDTO.getB_code());
-		likeVO.setL_id(memberVO.getM_id());
-		// log.debug("boardController에 likeVo setting : {} ",likeVO.toString());
-		int checkLike = bSer.checkLike(likeVO);
-		// log.debug("checklike :{}",checkLike);
-
-		model.addAttribute("LIKE", checkLike);
+		log.debug("boardDetail {}",bsDTO);
+	
 		model.addAttribute("BOARD_DETAIL", bsDTO);
 		
 		// 댓글리스트(07/18 혜미)

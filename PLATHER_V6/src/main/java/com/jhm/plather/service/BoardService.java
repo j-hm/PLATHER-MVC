@@ -2,6 +2,8 @@ package com.jhm.plather.service;
 
 import java.util.List;
 
+import org.springframework.ui.Model;
+
 import com.jhm.plather.model.BoardAndSongDTO;
 import com.jhm.plather.model.BoardVO;
 import com.jhm.plather.model.LikeVO;
@@ -11,7 +13,9 @@ public interface BoardService {
 
 	// 게시물 모두 조회 (플레이리스트없이)
 	public List<BoardVO> selectAll();
-
+	// 조회순, 추천순 , 날짜순 조회
+	public void selectByCategory(String category,Model model,int intPageNum);
+		
 	// 게시물 코드로 게시물만(플레이리스트 없이)
 	public BoardVO findById(Long b_code);
 

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -69,7 +70,8 @@ article#bn3 {
 							<c:forEach var="i" begin="0" end="4">
 								<tr id="highlight" data-bcode="${BDLIST[i].b_code}">
 									<td>${BDLIST[i].b_title}</td>
-									<td>${BDLIST[i].b_date}</td>
+									<td><fmt:formatDate pattern="yyyy-MM-dd" 
+                                value="${BDLIST[i].b_date}"/></td>
 								</tr>
 							</c:forEach>
 						</c:otherwise>

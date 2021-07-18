@@ -9,6 +9,14 @@
 	SELECT * FROM tbl_board
 	ORDER BY b_date DESC
 </select>
+<select id="selectAllDescHit" resultType="BoardVO">
+	SELECT * FROM tbl_board
+	ORDER BY b_hit DESC
+</select>
+<select id="selectAllDescLike" resultType="BoardVO">
+	SELECT * FROM tbl_board
+	ORDER BY b_like DESC
+</select>
 
 <!--  게시물만 조회 -->
 <select id="findById" resultType="BoardVO" parameterType="Long">
@@ -36,8 +44,8 @@
 
 
 <insert id="insert" parameterType="BoardVO">
-	INSERT INTO tbl_board(b_title,b_content,b_id) 
-	VALUES(#{b_title},#{b_content},#{b_id})
+	INSERT INTO tbl_board(b_title,b_content,b_id,b_nick) 
+	VALUES(#{b_title},#{b_content},#{b_id},#{b_nick})
 	<selectKey keyProperty="b_code" order="AFTER" resultType="Long">
 	SELECT LAST_INSERT_ID()
 	</selectKey>
@@ -49,6 +57,7 @@
 	<result property="b_content" column="b_content"/>
 	<result property="b_date" column="b_date"/>
 	<result property="b_id" column="b_id"/>
+	<result property="b_nick" column="b_nick"/>
 	<result property="b_hit" column="b_hit"/>
 	<result property="b_like" column="b_like"/>
 	<collection property="playList" ofType="SongVO">
@@ -62,7 +71,7 @@
 	SELECT 
 		B.b_code as b_code, B.b_title as b_title, B.b_content as b_content,
 		 B.b_date as b_date, B.b_moddate as b_moddate,
-		 B.b_id as b_id, B.b_hit as b_hit,B.b_like as b_like, 
+		 B.b_id as b_id,B.b_nick as b_nick, B.b_hit as b_hit,B.b_like as b_like, 
 		S.s_seq as s_seq,S.s_bcode as s_bcode, S.s_title as s_title,
 		 S.s_singer as s_singer 
 	FROM tbl_board as B

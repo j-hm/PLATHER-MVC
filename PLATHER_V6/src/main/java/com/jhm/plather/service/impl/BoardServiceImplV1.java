@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.jhm.plather.dao.BoardDao;
 import com.jhm.plather.dao.LikeDao;
@@ -11,8 +12,10 @@ import com.jhm.plather.dao.SongDao;
 import com.jhm.plather.model.BoardAndSongDTO;
 import com.jhm.plather.model.BoardVO;
 import com.jhm.plather.model.LikeVO;
+import com.jhm.plather.model.PageDTO;
 import com.jhm.plather.model.SongVO;
 import com.jhm.plather.service.BoardService;
+import com.jhm.plather.service.PageService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +28,7 @@ public class BoardServiceImplV1 implements BoardService {
 	protected final BoardDao boardDao;
 	protected final SongDao songDao;
 	protected final LikeDao lDao;
+	protected final PageService pSer;
 
 	@Override
 	public List<BoardVO> selectAll() {
@@ -165,5 +169,36 @@ public class BoardServiceImplV1 implements BoardService {
 	public int showLikeCnt(Long b_code) {
 		return boardDao.showLikeCnt(b_code);
 
+	}
+
+
+	@Override
+	public void selectByCategory(String category, Model model,int pageNum) {
+		List<BoardVO> totalBoard = boardDao.selectAll();
+		int totalSize= totalBoard.size();
+		
+		PageDTO pageDTO = pSer.makePagination(totalSize, pageNum);
+		
+		//조회순 추천순 날짜순별로 리스트 추출
+		List<BoardVO> boardList= new ArrayList<BoardVO>();
+		
+		if(category.equals("cat_hit")) {
+			boardList= boardDao.selectAllDescHit();
+		}else if(category.equals("cat_like")) {
+			boardList = boardDao.selectAllDescLike();
+		}else if(category.equals("cat_date")) {
+			boardList= totalBoard;
+		}
+		
+		// 위의 리스트를 페이지 별로 데이터 컷팅
+		List<BoardVO> pageList= new ArrayList<BoardVO>();
+		
+		for(int i = pageDTO.getOffset();i<pageDTO.getLimit(); i++) {
+			pageList.add(boardList.get(i));
+		}
+		
+		model.addAttribute("PAGE_NAV", pageDTO);
+		model.addAttribute("BOARDLIST", pageList);
+		model.addAttribute("CAT", category);
 	}
 }

@@ -17,32 +17,39 @@
 		<div class="play">
 			<div class="title"><p>플레이리스트</p><button class="btn_add">&#43; 등록</button></div>
 			<div class="select">
-				<select>
-					<option>조회순</option>
-					<option>추천순</option>
-					<option>날짜순</option>
+				<select name="category">
+					<option value="cat_date" 
+					<c:if test="${CAT == 'cat_date'}">selected="selected"</c:if>>날짜순</option>
+					<option value="cat_hit"
+					<c:if test="${CAT == 'cat_hit'}">selected="selected"</c:if>>조회순</option>
+					<option value="cat_like" 
+					<c:if test="${CAT == 'cat_like'}">selected="selected"</c:if>>추천순</option>
+					
 				</select>
 			</div>
 			<table class="list">
 				<tr>
 					<th>No.</th>
-					
 					<th>제목</th>
 					<th>작성자</th>
+					<th>찜</th>
 					<th>등록일</th>
 					
 				</tr>
 				<c:forEach items="${BOARDLIST}" var="B" varStatus="i">
 				<tr data-code="${B.b_code}">
-				<td>${i.index+1}</td>
-				<td>${B.b_title}</td>
-				<td>${B.b_nick}</td><!-- view를 만들어서 작성자 이름받기(나중에 수정) -->
+					<td><c:if test="${PAGE_NUM >1 }">${(PAGE_NUM-1)*10 + (i.index+1)}</c:if>
+					<c:if test="${PAGE_NUM ==1 }">${i.index+1}</c:if></td>
+					<td>${B.b_title}</td>
+					<td>${B.b_nick}</td>
+					<td>${B.b_like}</td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd" 
                                 value="${B.b_date}"/></td>
 				</tr>
 				
 				</c:forEach>
 			</table>
+				<%@include file="/WEB-INF/views/include/include_pagination_board.jspf" %>
 		</div>
 		<div class="search">
 		<form>
@@ -54,6 +61,12 @@
 	<%@include file="/WEB-INF/views/include/include_footer.jspf"%>
 </body>
 <script>
+	const select_cat = document.querySelector("select[name='category']")
+	select_cat.addEventListener("change",()=>{
+		const category = select_cat.value
+		//alert(category)
+		location.href="${rootPath}/board?category="+category
+	})
 	document.querySelector("button.btn_add").addEventListener("click",(e)=>{
 		location.href="${rootPath}/board/insert"
 	})
@@ -66,7 +79,18 @@
 			location.href="${rootPath}/board/detail?b_code="+b_code
 		}
 	})
-	
+	//pagination(includ_pagination_board)
+	const page_nav = document.querySelector("ul.page_nav")
+	if(page_nav) {
+		page_nav.addEventListener("click",(e)=>{
+			const li = e.target
+			if(li.tagName === "LI"){
+				const pageNum = li.dataset.num
+				const category = select_cat.value
+				location.href = "${rootPath}/board?pageNum=" + pageNum + "&category="+category
+			}
+		})
+	}
 	
 </script>
 </html>

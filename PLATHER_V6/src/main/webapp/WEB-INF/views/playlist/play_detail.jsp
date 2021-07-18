@@ -50,8 +50,10 @@
 			</table>
 			<div class="div_button">
 				<button class="btn_back" type="button">뒤로가기</button>
-				<button class="btn_modify" type="submit">수정</button>
-				<button class="btn_delete" type="button">삭제</button>
+				<c:if test="${BOARD_DETAIL.b_id == MEMBER.m_id}">
+					<button class="btn_modify" type="submit">수정</button>
+					<button class="btn_delete" type="button">삭제</button>
+				</c:if>
 			</div>
 
 		</div>
