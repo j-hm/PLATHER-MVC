@@ -93,8 +93,14 @@ public class BoardController {
 
 		bSer.updateHit(b_code);
 		BoardAndSongDTO bsDTO = bSer.findByIdWithList(b_code);
-		log.debug("boardDetail {}",bsDTO);
-	
+
+		LikeVO likeVO = new LikeVO();
+		MemberVO memberVO = (MemberVO) session.getAttribute("MEMBER");
+		likeVO.setL_bcode(bsDTO.getB_code());
+		likeVO.setL_id(memberVO.getM_id());
+		int checkLike = bSer.checkLike(likeVO);
+
+		model.addAttribute("LIKE", checkLike);
 		model.addAttribute("BOARD_DETAIL", bsDTO);
 		
 		// 댓글리스트(07/18 혜미)

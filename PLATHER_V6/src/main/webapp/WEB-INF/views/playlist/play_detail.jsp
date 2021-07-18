@@ -51,7 +51,7 @@
 			<div class="div_button">
 				<button class="btn_back" type="button">뒤로가기</button>
 				<c:if test="${BOARD_DETAIL.b_id == MEMBER.m_id}">
-					<button class="btn_modify" type="submit">수정</button>
+					<button class="btn_modify" type="button">수정</button>
 					<button class="btn_delete" type="button">삭제</button>
 				</c:if>
 			</div>
@@ -88,14 +88,16 @@ const m_id = heart.dataset.id
 btn_back.addEventListener("click",()=>{
 	location.href="${rootPath}/board"
 })
-btn_modify.addEventListener("click",()=>{
-	//alert(b_code)
-	location.href="${rootPath}/board/modify?b_code="+b_code
-})
-btn_delete.addEventListener("click",()=>{
-	location.href="${rootPath}/board/delete?b_code="+b_code
-})
-
+if(btn_modify && btn_delete){
+	btn_modify.addEventListener("click",()=>{
+		alert(b_code)
+		location.href="${rootPath}/board/modify?b_code="+b_code
+	})
+	
+	btn_delete.addEventListener("click",()=>{
+		location.href="${rootPath}/board/delete?b_code="+b_code
+	})
+}
 //heart부분을 클릭할때 
 heart.addEventListener("click",()=>{
 	
