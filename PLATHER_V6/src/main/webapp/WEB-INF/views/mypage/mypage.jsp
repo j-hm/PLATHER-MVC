@@ -50,6 +50,11 @@ table td {
 	vertical-align: top;
 	border-bottom: 1px solid #ccc;
 }
+
+div.nickname img#profile {
+	border: 1px solid black;
+	margin-top: 30px;
+}
 </style>
 </head>
 <body>
@@ -58,8 +63,9 @@ table td {
 		<h1 class="main_title">나의 활동</h1>
 		<div class="sub_container">
 			<div id="info_container">
-				<img src="${rootPath}/static/images/profile.png" class="profile">
+				<input name="m_profile" id="m_profile" value="${MB_PROFILE.m_profile}" type="hidden" >
 				<div class="nickname">
+					<img src="" width="100px" class="profile" >
 					<h5>${MEMBER.m_nickname}</h5>
 					<div class="line"></div>
 				</div>
@@ -252,5 +258,46 @@ table td {
 			location.href="${rootPath}/board/detail?b_code="+b_code
 		}
 	})	
+	
+	
+	/* 변수 선언 */
+	let input_profile = document.querySelector("input#m_profile")
+	let img_profile = document.querySelector("img.profile")
+	if(input_profile) {
+		
+		let user_profile = input_profile.value
+		
+		if(user_profile === "0") {
+			
+			img_profile.src = "${rootPath}/static/images/profile_red.png"	
+			
+		} else if(user_profile === "1") {
+			
+			img_profile.src = "${rootPath}/static/images/profile_orange.png"
+			
+		} else if(user_profile === "2") {
+			
+			img_profile.src = "${rootPath}/static/images/profile_yellow.png"
+			
+		} else if(user_profile === "3") {
+			
+			img_profile.src = "${rootPath}/static/images/profile_green.png"
+			
+		} else if(user_profile === "4") {
+			
+			img_profile.src = "${rootPath}/static/images/profile_blue.png"
+			
+		} else if(user_profile === "5") {
+			
+			img_profile.src = "${rootPath}/static/images/profile_navy.png"
+			
+		} else if(user_profile === "6") {
+			
+			img_profile.src = "${rootPath}/static/images/profile_puple.png"
+			
+		}
+		
+	} // input_profile end
+	
 </script>
 </html>

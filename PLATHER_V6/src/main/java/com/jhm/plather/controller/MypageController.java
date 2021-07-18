@@ -32,9 +32,15 @@ public class MypageController {
 	protected final BoardService bService;
 
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
-	public String list() {
-
+	public String list(Model model, HttpSession hSession) {
+		// 마이 페이지
+		// 프로필 값 가져와서 랜덤 프로필색 지정
+		MemberVO mbVO = (MemberVO) hSession.getAttribute("MEMBER");
+		
+		model.addAttribute("MB_PROFILE",mbVO);
+		
 		return "mypage/mypage";
+
 	}
 
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.POST)
