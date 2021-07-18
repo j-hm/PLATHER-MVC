@@ -16,7 +16,9 @@
 		<div class="notice">
 			<div class="title">
 				<p>공지사항</p>
-				<button class="btn_input">등록</button>
+				<c:if test="${MEMBER.m_level == '1'}">
+					<button class="btn_input">등록</button>
+				</c:if>
 			</div>
 			<table class="list">
 				<tr>
@@ -52,9 +54,6 @@
 	<%@include file="/WEB-INF/views/include/include_footer.jspf"%>
 </body>
 <script>
-	document.querySelector("button.btn_input").addEventListener("click",(e)=>{
-		location.href="${rootPath}/notice/input"
-	})
 	document.querySelector("table.list").addEventListener("click",(e)=>{
 		
 		let tagName = e.target.tagName
@@ -63,6 +62,9 @@
 			let n_code = tr.dataset.ncode
 			location.href="${rootPath}/notice/detail?n_code=" + n_code
 		}
+	})
+	document.querySelector("button.btn_input").addEventListener("click",(e)=>{
+		location.href="${rootPath}/notice/input"
 	})
 	
 </script>

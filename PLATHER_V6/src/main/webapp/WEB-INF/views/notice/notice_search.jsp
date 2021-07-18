@@ -35,7 +35,7 @@
 							<tr id="highlight" data-ncode="${T.n_code}">
 								<td>${i.index+1}</td>
 								<td>${T.n_title}</td>
-								<td>${T.n_mcode}</td>
+								<td>${T.n_nickname}</td>
 								<td>${T.n_date}</td>
 								<td data-hit="${T.n_hit}">${T.n_hit}</td>
 							</tr>

@@ -13,12 +13,12 @@ public interface NoticeDao extends GenericDao<NoticeVO, String> {
 
 	public List<NoticeVO> findByTitle(String n_title);
 
-	public List<NoticeVO> findByNick(String text);
+	public List<NoticeDTO> findByNick(String n_nickname);
 
-	public List<NoticeVO> findByContent(String text);
-
-	public List<NoticeDTO> selectAllView();
+	public List<NoticeVO> findByContent(String n_content);
 	
 	public NoticeDTO findByNcode(String n_code);
+
+	public List<NoticeDTO> selectAllView();
 
 }

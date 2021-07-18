@@ -29,9 +29,9 @@
 				</tr>
 				<tr id="btn_box">
 					<td></td>
+					<td><c:if test="${MEMBER.m_level == '1'}"><button class="update">수정</button></c:if></td>
+					<td><c:if test="${MEMBER.m_level == '1'}"><button class="delete">삭제</button></c:if></td>
 					<td><button class="tolist">뒤로가기</button></td>
-					<td><button class="update">수정</button></td>
-					<td><button class="delete">삭제</button></td>
 				</tr>
 			</table>
 		</div>

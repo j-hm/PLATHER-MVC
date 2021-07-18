@@ -44,6 +44,8 @@
 					
 					</span><span id="count">${BOARD_DETAIL.b_like}</span>
 					</td>
+					<!-- table모양 맞추려고 임시로 넣은 코드입니다 수정하셔도 상관없음(7/18 혜미) -->
+					<td colspan="3"></td>
 				</tr>
 			</table>
 			<div class="div_button">
@@ -65,9 +67,7 @@
 				</c:forEach>
 			</table>
 		</div>
-
-		<div class="comment">
-		</div>
+		<%@include file="/WEB-INF/views/include/include_comment.jspf"%>
 	</div>
 
 	<%@include file="/WEB-INF/views/include/include_footer.jspf"%>

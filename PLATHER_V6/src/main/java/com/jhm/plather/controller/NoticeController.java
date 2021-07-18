@@ -101,7 +101,7 @@ public class NoticeController {
 			List<NoticeVO> searchTitle = nDao.findByTitle(text);
 			model.addAttribute("SearchResult", searchTitle);
 		} else if (cat.equalsIgnoreCase("NICK")) {
-			List<NoticeVO> searchNick = nDao.findByNick(text);
+			List<NoticeDTO> searchNick = nDao.findByNick(text);
 			model.addAttribute("SearchResult", searchNick);
 		} else if (cat.equalsIgnoreCase("CONTENT")) {
 			List<NoticeVO> searchContent = nDao.findByContent(text);

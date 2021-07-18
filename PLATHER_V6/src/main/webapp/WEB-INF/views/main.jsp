@@ -2,10 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
-
-
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
 <title>PLATHER MAIN</title>
-
+<link href="${rootPath}/static/css/main_home.css?ver=2021-07-18-001"
+	rel="stylesheet" />
 <style>
 article#bn1 {
 	background: url("${rootPath}/static/images/summer_event.png") no-repeat;

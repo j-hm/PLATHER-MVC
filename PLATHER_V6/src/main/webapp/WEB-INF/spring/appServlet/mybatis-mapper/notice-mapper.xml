@@ -28,9 +28,9 @@
 		SELECT * FROM tbl_notice
 		WHERE n_title LIKE CONCAT('%', #{n_title}, '%')
 	</select>
-	<select id="findByNick" resultType="NoticeVO">
-		SELECT * FROM tbl_notice
-		WHERE n_mcode LIKE CONCAT('%', #{n_mcode}, '%')
+	<select id="findByNick" resultType="NoticeDTO">
+		SELECT * FROM view_nlist
+		WHERE n_nickname LIKE CONCAT('%', #{n_nickname}, '%')
 	</select>
 	<select id="findByContent" resultType="NoticeVO">
 		SELECT * FROM tbl_notice

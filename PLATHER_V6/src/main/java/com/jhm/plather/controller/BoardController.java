@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.jhm.plather.dao.CommentDao;
 import com.jhm.plather.model.BoardAndSongDTO;
 import com.jhm.plather.model.BoardVO;
+import com.jhm.plather.model.CommentDTO;
 import com.jhm.plather.model.LikeVO;
 import com.jhm.plather.model.MemberVO;
 import com.jhm.plather.model.SongVO;
@@ -98,7 +99,11 @@ public class BoardController {
 
 		model.addAttribute("LIKE", checkLike);
 		model.addAttribute("BOARD_DETAIL", bsDTO);
-
+		
+		// 댓글리스트(07/18 혜미)
+		List<CommentDTO> clist = cDao.findByCbcode(b_code);
+		model.addAttribute("COMS", clist);
+		
 		return "playlist/play_detail";
 
 	}

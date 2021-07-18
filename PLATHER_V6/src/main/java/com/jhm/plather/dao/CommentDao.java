@@ -11,4 +11,5 @@ public interface CommentDao extends GenericDao<CommentVO, String>{
 	
 	//member id로 댓글조회
 	public List<CommentDTO> findByMemberId(String c_id);
+
 }
