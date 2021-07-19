@@ -72,7 +72,7 @@ CREATE table tbl_member(
 
 CREATE TABLE tbl_comment(
 	c_seq	BIGINT	AUTO_INCREMENT	PRIMARY KEY,
-	c_bcode	CHAR(5) NOT NUll,
+	c_bcode	bigint NOT NUll,
 	c_id	VARCHAR(125)	NOT NULL,	
 	c_comment	VARCHAR(500) NOT NUll,
   c_date CHAR(10) NOT NUll,
