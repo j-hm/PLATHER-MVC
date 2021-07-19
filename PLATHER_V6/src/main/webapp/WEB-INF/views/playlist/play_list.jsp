@@ -36,6 +36,13 @@
 					<th>등록일</th>
 					
 				</tr>
+				<c:choose>
+					<c:when test="${empty BOARDLIST}">
+						<tr>
+							<td colspan="5">데이터 없음</td>
+						</tr>
+					</c:when>
+					<c:otherwise>
 				<c:forEach items="${BOARDLIST}" var="B" varStatus="i">
 				<tr data-code="${B.b_code}">
 					<td><c:if test="${PAGE_NUM >1 }">${(PAGE_NUM-1)*10 + (i.index+1)}</c:if>
@@ -48,6 +55,8 @@
 				</tr>
 				
 				</c:forEach>
+				</c:otherwise>
+				</c:choose>
 			</table>
 				<%@include file="/WEB-INF/views/include/include_pagination_board.jspf" %>
 		</div>
@@ -67,16 +76,20 @@
 		//alert(category)
 		location.href="${rootPath}/board?category="+category
 	})
+	//등록 버튼을 누를 때
 	document.querySelector("button.btn_add").addEventListener("click",(e)=>{
 		location.href="${rootPath}/board/insert"
 	})
+	// 테이블 데이터를 클릭할때 
 	document.querySelector("table.list").addEventListener("click",(e)=>{
 		let target =e.target;
 		let tagName = target.tagName;
 		if(tagName ==="TD"){
 			let b_code = e.target.closest("TR").dataset.code
 			//alert(b_code)
+			if(b_code){
 			location.href="${rootPath}/board/detail?b_code="+b_code
+			}
 		}
 	})
 	//pagination(includ_pagination_board)
@@ -87,10 +100,11 @@
 			if(li.tagName === "LI"){
 				const pageNum = li.dataset.num
 				const category = select_cat.value
-				//const totalP= document.querySelector("#totalPages").dataset.num
+				const totalP= document.querySelector("#totalPages").dataset.num
 				//alert(totalP)
-			
+				if(pageNum>0 && pageNum<totalP+1){
 				location.href = "${rootPath}/board?pageNum=" + pageNum + "&category="+category
+				}
 			}
 		})
 	}

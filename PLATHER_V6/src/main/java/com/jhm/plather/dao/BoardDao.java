@@ -15,6 +15,8 @@ public interface BoardDao extends GenericDao<BoardVO, Long> {
 
 	// userid로 찾기
 	public List<BoardVO> findByUserId(String b_id);
+	
+	public int findByUserIdCNT(String b_id);
 
 	// 게시글 코드로 게시글 찾기
 	public BoardAndSongDTO findByIdResultMap(Long b_code);

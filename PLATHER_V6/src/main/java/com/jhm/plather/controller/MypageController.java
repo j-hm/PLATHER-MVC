@@ -36,7 +36,14 @@ public class MypageController {
 		// 마이 페이지
 		// 프로필 값 가져와서 랜덤 프로필색 지정
 		MemberVO mbVO = (MemberVO) hSession.getAttribute("MEMBER");
+		// 내가 쓴 글
+		String m_id = mbVO.getM_id();
 		
+		bService.findByUserIdCNT(m_id,model);
+		// 내가 쓴 댓글 
+		List<CommentDTO> cList = cService.findByMemberId(m_id);
+		
+		model.addAttribute("CNT_COMMENT", cList.size());
 		model.addAttribute("MB_PROFILE",mbVO);
 		
 		return "mypage/mypage";
@@ -95,7 +102,7 @@ public class MypageController {
 	public List<BoardVO> myLike(String m_id) {
 		
 		List<BoardVO> boardList = bService.myLikeBoard(m_id);
-		log.debug("mylike boardlist : {} ", boardList);
+		log.debug("mylike boardlist : {} ", boardList.toString());
 		return boardList;
 
 	}

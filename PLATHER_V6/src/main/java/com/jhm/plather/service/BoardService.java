@@ -14,14 +14,16 @@ public interface BoardService {
 	// 게시물 모두 조회 (플레이리스트없이)
 	public List<BoardVO> selectAll();
 	// 조회순, 추천순 , 날짜순 조회
-	public void selectByCategory(String category,Model model,int intPageNum);
+	public int selectByCategory(String category,Model model,int intPageNum);
 		
 	// 게시물 코드로 게시물만(플레이리스트 없이)
 	public BoardVO findById(Long b_code);
 
 	// 게시물 등록(tbl_board와 tbl_song같이)
 	public int register(BoardVO boardVO, List<SongVO> list);
-
+	
+	// 멤버가 쓴 게시물과 찜 개수 조회
+	public int findByUserIdCNT(String b_id,Model model);
 	// 게시물 수정
 	public int update(BoardVO vo);
 

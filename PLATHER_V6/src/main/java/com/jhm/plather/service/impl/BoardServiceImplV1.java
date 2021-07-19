@@ -153,18 +153,18 @@ public class BoardServiceImplV1 implements BoardService {
 	@Override
 	public List<BoardVO> myLikeBoard(String m_id) {
 
-		List<BoardVO> boardVO = new ArrayList<BoardVO>();
+		List<BoardVO> boardList = new ArrayList<BoardVO>();
 
 		List<Long> bCodeList = lDao.myLikeBoard(m_id);
-		log.debug("myLike bcode : {}", bCodeList);
+		log.debug("myLike bcode : {}", bCodeList.toString());
 		for (Long bCode : bCodeList) {
 			BoardVO vo = new BoardVO();
 			vo = boardDao.findById(bCode);
-			boardVO.add(vo);
+			boardList.add(vo);
 		}
-		log.debug("myLike: {}", boardVO);
-		return boardVO;
-	}// clickHeart end
+		log.debug("myLike: {}", boardList.toString());
+		return boardList;
+	}
 
 	public int showLikeCnt(Long b_code) {
 		return boardDao.showLikeCnt(b_code);
@@ -173,12 +173,14 @@ public class BoardServiceImplV1 implements BoardService {
 
 
 	@Override
-	public void selectByCategory(String category, Model model,int pageNum) {
+	public int selectByCategory(String category, Model model,int pageNum) {
 		List<BoardVO> totalBoard = boardDao.selectAll();
 		int totalSize= totalBoard.size();
 		
 		PageDTO pageDTO = pSer.makePagination(totalSize, pageNum);
-		
+		if(pageDTO == null) {
+			return 0;
+		}
 		//조회순 추천순 날짜순별로 리스트 추출
 		List<BoardVO> boardList= new ArrayList<BoardVO>();
 		
@@ -200,5 +202,15 @@ public class BoardServiceImplV1 implements BoardService {
 		model.addAttribute("PAGE_NAV", pageDTO);
 		model.addAttribute("BOARDLIST", pageList);
 		model.addAttribute("CAT", category);
+		return 1;
+	}
+
+	@Override
+	public int findByUserIdCNT(String b_id,Model model) {
+		int cnt_board =boardDao.findByUserIdCNT(b_id);
+		int cnt_like = lDao.myLikeBoardCNT(b_id);
+		model.addAttribute("CNT_BOARD", cnt_board);
+		model.addAttribute("CNT_LIKE", cnt_like);
+		return 0;
 	}
 }

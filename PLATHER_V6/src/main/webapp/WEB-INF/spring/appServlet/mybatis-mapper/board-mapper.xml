@@ -34,7 +34,10 @@
 
 
 <select id="findByUserId" resultType="BoardVO" parameterType="String">
-	SELECT * FROM tbl_song WHERE b_id =#{b_id}
+	SELECT * FROM tbl_board WHERE b_id =#{b_id}
+</select>
+<select id="findByUserIdCNT" resultType="int" parameterType="String">
+	SELECT COUNT(*) FROM tbl_board WHERE b_id =#{b_id}
 </select>
 
 <!-- b_like (likecount리턴) -->

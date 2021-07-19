@@ -5,10 +5,15 @@
 
 <mapper namespace="com.jhm.plather.dao.LikeDao">
 
-	
+	<!--  l_id 가 찜을 누른 게시물 코드 조회 -->
 	<select id="myLikeBoard" resultType="Long" parameterType="String">
 		
 		SELECT l_bcode FROM tbl_like 
+		WHERE l_id = #{l_id} AND l_likecheck = 1
+	</select>
+	<!--  l_id 가 찜을 누른 게시물 개수 조회 -->
+	<select id="myLikeBoardCNT" resultType="int" parameterType="String">
+		SELECT COUNT(*) FROM tbl_like 
 		WHERE l_id = #{l_id} AND l_likecheck = 1
 	</select>
 	

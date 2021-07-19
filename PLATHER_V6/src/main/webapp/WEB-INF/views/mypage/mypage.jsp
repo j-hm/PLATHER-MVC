@@ -79,15 +79,15 @@ div.nickname img#profile {
 				<ul class="box_container">
 					<li class="playlist box">
 						<div class="b-title">내가 쓴 글</div>
-						<div class="count">?건</div>
+						<div class="count">${CNT_BOARD} 건</div>
 					</li>
 					<li class="comment box">
 						<div class="b-title">내가 쓴 댓글</div>
-						<div class="count">?건</div>
+						<div class="count">${CNT_COMMENT} 건</div>
 					</li>
 					<li class="heart box">
 						<div class="b-title">찜한 글</div>
-						<div class="count">?건</div>
+						<div class="count">${CNT_LIKE} 건</div>
 					</li>
 				</ul>
 				<div id="table" class="hidden">
@@ -219,7 +219,7 @@ div.nickname img#profile {
 			console.log(data)
 			if(data.length>0){
 				div_table.classList.remove("hidden")
-				table_header("게시글코드","글제목","찜한 수")
+				table_header("게시글코드","글제목","찜 수")
 				let html = "";
 				for(let i = 0 ; i < data.length ; i++){
 					html += "<tr data-code="+data[i].b_code +">"

@@ -9,6 +9,8 @@ public interface LikeDao {
 	
 	// 멤버 아이디로 조회해서 찜을 누른 게시물 코드를 리턴
 	public List<Long> myLikeBoard(String m_id);
+	// 멤버 아이디로 조회해서 찜을 누를 게시물 수 리턴
+	public int myLikeBoardCNT(String m_id);
 	
 	// 찜 +1
 	public int clickLike(LikeVO vo);
