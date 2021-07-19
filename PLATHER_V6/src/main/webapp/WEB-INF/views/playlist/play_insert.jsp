@@ -330,20 +330,9 @@ table td {
 		const tag = e.target.tagName;
 		if(tag === "TD"){
 			const t_row = e.target.closest("TR").dataset.row
-			
-			console.table(playList)
-			
-			//playList = playList.filter(play=>{
-			//	console.log(play);
-			//	 console.log("s_row:",play.s_row,"row:",row, play.s_row == row)
-			//	return play.s_row != row
-			//})
-			//row : 클릭한곳의 tr의 data-row
-			// play.s_row 가 클릭한 row가 아닌 값만 걸러 playList로 저장
+			//console.table(playList)
 			playList = playList.filter(play=>play.s_row != t_row)
-			
 			// console.log("새로만든 playList")
-			// console.table(playList)
 			e.target.closest("TR").remove()
 		}
 	})
