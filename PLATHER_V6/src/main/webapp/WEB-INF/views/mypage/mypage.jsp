@@ -261,17 +261,15 @@ div.nickname img#profile {
 	
 	
 	/* 변수 선언 */
-	let input_profile = document.querySelector("input#m_profile")
-	let img_profile = document.querySelector("img.profile")
+	const input_profile = document.querySelector("input#m_profile")
+	const img_profile = document.querySelector("img.profile")
 	if(input_profile) {
 		
-		let user_profile = input_profile.value
-		
-		if(user_profile === "0") {
+		const profile_num = input_profile.value
 			
-			img_profile.src = "${rootPath}/static/images/profile_red.png"	
+			img_profile.src = "${rootPath}/static/images/profile_"+ profile_num + ".png"	
 			
-		} else if(user_profile === "1") {
+		/* } else if(user_profile === "1") {
 			
 			img_profile.src = "${rootPath}/static/images/profile_orange.png"
 			
@@ -295,7 +293,7 @@ div.nickname img#profile {
 			
 			img_profile.src = "${rootPath}/static/images/profile_puple.png"
 			
-		}
+		} */
 		
 	} // input_profile end
 	
