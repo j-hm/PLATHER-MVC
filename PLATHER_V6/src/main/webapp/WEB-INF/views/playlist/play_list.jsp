@@ -87,6 +87,9 @@
 			if(li.tagName === "LI"){
 				const pageNum = li.dataset.num
 				const category = select_cat.value
+				//const totalP= document.querySelector("#totalPages").dataset.num
+				//alert(totalP)
+			
 				location.href = "${rootPath}/board?pageNum=" + pageNum + "&category="+category
 			}
 		})

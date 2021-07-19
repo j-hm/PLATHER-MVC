@@ -63,9 +63,12 @@
 			location.href="${rootPath}/notice/detail?n_code=" + n_code
 		}
 	})
-	document.querySelector("button.btn_input").addEventListener("click",(e)=>{
-		location.href="${rootPath}/notice/input"
-	})
+	const btn_input = document.querySelector("button.btn_input");
+	if(btn_input){
+		btn_input.addEventListener("click",(e)=>{
+			location.href="${rootPath}/notice/input"
+		})
+	}
 	
 </script>
 </html>

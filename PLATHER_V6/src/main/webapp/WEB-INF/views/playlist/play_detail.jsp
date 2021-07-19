@@ -90,7 +90,7 @@ btn_back.addEventListener("click",()=>{
 })
 if(btn_modify && btn_delete){
 	btn_modify.addEventListener("click",()=>{
-		alert(b_code)
+		//alert(b_code)
 		location.href="${rootPath}/board/modify?b_code="+b_code
 	})
 	

@@ -44,6 +44,6 @@
 			">${pageNum}</li>
 		</c:forEach>
 		<li data-num="${PAGE_NUM+1}"><i class="fas fa-angle-right"></i></li>
-		<li data-num="${PAGE_NAV.totalPages}"><i class="fas fa-angle-double-right"></i></li>
+		<li id="totalPages" data-num="${PAGE_NAV.totalPages}"><i class="fas fa-angle-double-right"></i></li>
 	</ul>
 </section>
