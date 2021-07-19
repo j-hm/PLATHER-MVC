@@ -29,7 +29,7 @@
   white-space: nowrap;
 }
 .update input {
-  width: 50%;
+  width: 40%;
   margin: 4px 5px;
   padding: 8px;
   border-radius: 25px;
@@ -58,4 +58,41 @@
 }
 .btn_box {
   text-align: right;
+}
+
+div#pw_box, div#re_pw_box, div#nick_box {
+	display: flex;
+	width: 90%;
+}
+
+div.pw.error, div.re_pw.error, div.nick.error {
+	
+	margin-left: 5px;
+	width: 30%;
+	font-size: 12px; 
+}
+
+
+ div.pw.error.view, div.re_pw.error.view, div.nick.error.view  {
+ 	padding-top: 8px;
+	color: rgb(245, 63, 63);
+	 
+}
+
+ div.pw.error.view_answer, div.re_pw.error.view_answer,
+ 	div.nick.error.view_answer {
+ 	padding-top: 8px;
+	color: rgb(60, 179, 113);
+}
+
+
+
+div#nick_box input, div#pw_box input, div#re_pw_box input {
+	
+		width: 35%;
+}
+
+div#nick_box label, div#pw_box label, div#re_pw_box label {
+	
+		margin-left: 35px;
 }

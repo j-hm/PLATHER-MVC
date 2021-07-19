@@ -79,8 +79,6 @@ body {
 	let re_pw = document.querySelector("input#pw_check")
 	
 	let input_nick = document.querySelector("input#m_nickname")
-	let input_birth = document.querySelector("input#m_birth")
-	let input_name = document.querySelector("input#m_name")
 	
 	// error 메시지를 보여줄 값을 담음
 	let msg_error = document.querySelector("div.join.error")
@@ -88,12 +86,14 @@ body {
 	let pw_error = document.querySelector("div.pw.error")
 	let re_pw_error = document.querySelector("div.re_pw.error")
 	let nick_error = document.querySelector("div.nick.error")
+		
 	// ID를 반드시 입력하도록 설정(다른 inputbox를 클릭하여도 안넘어감)
 	if(input_id) {
 		
 		input_id.addEventListener("blur",(e)=>{
 			
 			let user_id = e.currentTarget.value
+		
 			if(user_id === "") {
 				
 				input_id.style.backgroundColor = "rgba(245, 63, 63, 0.3)";
@@ -101,46 +101,52 @@ body {
 				msg_error.style.textAlign = "center"
 				msg_error.classList.add("view")
 				input_id.focus()
-				return false
-			} 
-		// 중복된 ID 검사	
-		 fetch("${rootPath}/member/id_check?m_id=" + user_id)
-		 	.then(response=>response.text())
-		 	.then(result=>{
-		 		
-		 		// 만약 DB에 이미 있는 id이면
-		 		if(result === "USE_ID") {
-		 			
-		 			
-		 			id_error.innerText = " * 중복된 ID 입니다 * "
-					id_error.classList.add("view")
-					input_id.style.backgroundColor = "rgba(245, 63, 63, 0.3)";
-					input_id.focus()
-					return false
-					
-				// DB에 없는 id이면
-		 		} else if(result === "NOT_USE_ID") {
-		 			
-		 				id_error.innerText = " * 사용가능한 ID 입니다 * "
-						id_error.classList.add("view_answer")
-						input_id.style.backgroundColor = "rgba(60, 179, 113, 0.3)";
-						input_pw.focus()
+				
+			} else {
+
+				fetch("${rootPath}/member/id_check?m_id=" + user_id)
+			 	.then(response=>response.text())
+			 	.then(result=>{
+			 		
+			 		// style 지정한것이 중첩이 안되도록 remove
+			 		msg_error.classList.remove("view")
+			 		id_error.classList.remove("view")
+					id_error.classList.remove("view_answer")
+					msg_error.innerText = ""
+			 		
+			 		// 만약 DB에 이미 있는 id이면
+			 		if(result === "USE_ID") {
+			 			
+			 			id_error.innerText = " * 중복된 ID 입니다 * "
+						id_error.classList.add("view")
+						input_id.style.backgroundColor = "rgba(245, 63, 63, 0.3)";
+						input_id.focus()
 						return false
-		 		}
-		 		
-		 	}) // then(result) end
+						
+					// DB에 없는 id이면
+			 		} else if(result === "NOT_USE_ID") {
+			 				
+			 				id_error.innerText = " * 사용가능한 ID 입니다 * "
+							id_error.classList.add("view_answer")
+							input_id.style.backgroundColor = "rgba(60, 179, 113, 0.3)";
+							return false
+			 		}
+			 		
+			 	}) // then(result) end
+			 	
+			} // esle end
 			
 		}) // blur end
-		
-	} // input_id end
+	}	
 	
-	// 비밀번호
-	if(input_pw) {
-		input_pw.addEventListener("blur", (e) =>{ 
+if(input_pw) {
+		
+		input_pw.addEventListener("keydown", (e) =>{ 
 			
-			let user_pw = e.currentTarget.value
+			let user_pw = input_pw.value
 			
 			if(user_pw === "") {
+				
 				input_pw.style.backgroundColor = "rgba(245, 63, 63, 0.3)";
 				msg_error.style.textAlign = "center"
 				msg_error.innerText = " * 비밀번호는 반드시 입력해야합니다 * "
@@ -149,17 +155,26 @@ body {
 				return false
 				
 			} else if(user_pw.length < 4 || user_pw.length > 10) {
+				
+				msg_error.classList.remove("view")
+				msg_error.innerText = ""
+				
+				pw_error.classList.remove("view_answer")
+				
 				input_pw.style.backgroundColor = "rgba(245, 63, 63, 0.3)";
 				pw_error.innerText = " * 비밀번호는 4이상 10이하만 가능 합니다 * "
 				pw_error.classList.add("view")
+				
 				input_pw.focus()
 				return false
 				
 			} else {
+				
+				pw_error.classList.remove("view")
+				
 				input_pw.style.backgroundColor = "rgba(60, 179, 113, 0.3)";
 				pw_error.innerText = " * 사용가능한 비밀번호입니다 * "
 				pw_error.classList.add("view_answer")
-				re_pw.focus()
 				return false
 			}
 		})
@@ -167,36 +182,40 @@ body {
 	}
 	
 	if(re_pw) {
-		re_pw.addEventListener("click", (e) =>{
-			
+		re_pw.addEventListener("keydown", (e) =>{
+		
 			let user_pw = input_pw.value
 			let user_re_pw = re_pw.value
-			
-			 if(user_re_pw !== user_pw) {
-					re_pw.style.backgroundColor = "rgba(245, 63, 63, 0.3)";
-					re_pw_error.innerText = " * 비밀번호가 불일치합니다 다시 확인해주세요 * "
-					re_pw_error.classList.add("view")
-					re_pw.focus()
-					return false
-					
-			} else {
-				re_pw.style.backgroundColor = "rgba(60, 179, 113, 0.3)"
-				re_pw_error.innerText = " * 비밀번호가 일치합니다 * "
-				re_pw_error.classList.add("view_answer")
-				return false
-			
-			}
-			
-		})
-	}
-	
-	
-	// 닉네임을 반드시 입력하도록 설정
-	if(input_nick) {
 		
-		input_nick.addEventListener("click", (e) =>{
+		 if(user_re_pw !== user_pw) {
+			 	
+				re_pw_error.classList.remove("view_answer")
+			 
+				re_pw.style.backgroundColor = "rgba(245, 63, 63, 0.3)";
+				re_pw_error.innerText = " * 비밀번호가 불일치합니다 다시 확인해주세요 * "
+				re_pw_error.classList.add("view")
+				re_pw.focus()
+				return false
+				
+		} else {
 			
-			let user_nick = e.currentTarget.value
+			re_pw_error.classList.remove("view")
+			
+			re_pw.style.backgroundColor = "rgba(60, 179, 113, 0.3)"
+			re_pw_error.innerText = " * 비밀번호가 일치합니다 * "
+			re_pw_error.classList.add("view_answer")
+			return false
+		
+		}
+		
+	})
+}
+	
+if(input_nick) {
+		
+		input_nick.addEventListener("keydown", (e) =>{
+			
+			let user_nick = input_nick.value
 			
 			// nickname 중복검사
 			if(user_nick ==="") {
@@ -205,32 +224,46 @@ body {
 					msg_error.classList.add("view")
 					input_nick.focus()
 					return false
+			} else {
+				
+
+				fetch("${rootPath}/member/nick_check?m_nickname=" + user_nick)
+				.then(response=>response.text())
+				.then(result=>{
+					
+					// style 지정한것이 중첩이 안되도록 remove
+			 		msg_error.classList.remove("view")
+			 		msg_error.innerText = ""
+			 		nick_error.classList.remove("view")
+					nick_error.classList.remove("view_answer")
+					
+						
+					if(result === "USE_NICK") {
+						// 만약 DB에 있는 회원이면
+						input_nick.style.backgroundColor = "rgba(245, 63, 63, 0.3)";
+						nick_error.innerText = " * 중복된 닉네임 입니다 *"
+						nick_error.classList.add("view")
+						input_nick.focus()
+						return false
+						
+					} else if(result === "NOT_USE_NICK" ) {
+						// 만약 DB에 없는 회원이면
+						
+						input_nick.style.backgroundColor = "rgba(60, 179, 113, 0.3)"
+						nick_error.innerText = " * 사용가능한 닉네임 입니다 *"
+						nick_error.classList.add("view_answer")
+						return false
+					}
+					
+				}) //then(result) end
+				
 			}
 			
-			fetch("${rootPath}/member/nick_check?m_nickname=" + user_nick)
-			.then(response=>response.text())
-			.then(result=>{
-				
-					
-				if(result === "USE_NICK") {
-					// 만약 DB에 있는 회원이면
-					input_nick.style.backgroundColor = "rgba(245, 63, 63, 0.3)";
-					nick_error.innerText = " * 중복된 닉네임 입니다 *"
-					nick_error.classList.add("view")
-					input_nick.focus()
-					return false
-					
-				} else if(result === "NOT_USE_NICK" ) {
-					// 만약 DB에 없는 회원이면
-					
-					input_nick.style.backgroundColor = "rgba(60, 179, 113, 0.3)"
-					nick_error.innerText = " * 사용가능한 닉네임 입니다 *"
-					nick_error.classList.add("view_answer")
-					return false
-				}
-				
-			}) //then(result) end
 		
 		}) // blur end
+		
 	}	// input_nick end
+	
+
+	
 </script>

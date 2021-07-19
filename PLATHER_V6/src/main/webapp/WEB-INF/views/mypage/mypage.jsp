@@ -60,7 +60,6 @@ div.nickname img#profile {
 <body>
 	<%@include file="/WEB-INF/views/include/include_header.jspf"%>
 	<div id="main_container">
-		<h1 class="main_title">나의 활동</h1>
 		<div class="sub_container">
 			<div id="info_container">
 				<input name="m_profile" id="m_profile" value="${MB_PROFILE.m_profile}" type="hidden" >

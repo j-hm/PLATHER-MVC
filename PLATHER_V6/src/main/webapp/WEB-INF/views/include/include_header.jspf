@@ -3,7 +3,7 @@
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}"/>
 
-<link href="${rootPath}/static/css/header.css?ver=2021-07-17-008"
+<link href="${rootPath}/static/css/header.css?ver=2021-07-19-001"
 	rel="stylesheet" />
 <header>
 		<a href="${rootPath}/main"><img
