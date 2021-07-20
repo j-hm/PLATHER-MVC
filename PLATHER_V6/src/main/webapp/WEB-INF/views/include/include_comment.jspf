@@ -29,6 +29,7 @@ form.comment table td {
 	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 	z-index: 1;
 	position: absolute;
+	cursor: pointer;
 }
 
 .dropmenu p {
@@ -54,6 +55,7 @@ form.comment table td {
 .list button {
 	border: 0;
 	background: none;
+	cursor: pointer;
 }
 
 .update_form, .c_cancel {
@@ -75,6 +77,7 @@ form.comment table td {
 </style>
 <div class="comment">
 
+<!-- 댓글입력 -->
 	<h1>댓글</h1>
 	<form method="POST" class="comment" action="${rootPath}/comment/insert">
 		<input type="hidden" name="c_bcode" value="${BOARD_DETAIL.b_code}" />
@@ -99,21 +102,24 @@ form.comment table td {
 			</tr>
 		</table>
 	</form>
-
+	
+<!-- 댓글목록 -->
 	<table class="list">
 		<c:forEach items="${COMS}" var="CO" varStatus="i">
 			<tr data-seq="${CO.c_seq}" data-index="${i.index}">
 				<th>${CO.c_nickname}</th>
 				<th>${CO.c_date}</th>
 				<th class="drop">
-					<button class="dropbtn">
-						<i class="fas fa-ellipsis-v fa-lg"></i>
-					</button>
-					<div class="dropmenu">
-						<p class="c_update">수정
-						<p class="c_cancel">취소
-						<p class="c_delete">삭제
-					</div>
+					<c:if test="${MEMBER.m_nickname == CO.c_nickname}">
+						<button class="dropbtn">
+							<i class="fas fa-ellipsis-v fa-lg"></i>
+						</button>
+						<div class="dropmenu">
+							<p class="c_update">수정
+							<p class="c_cancel">취소
+							<p class="c_delete">삭제
+						</div>
+					</c:if>
 				</th>
 			</tr>
 			<c:choose>
@@ -125,11 +131,11 @@ form.comment table td {
 								<input type="hidden" name="c_bcode"	value="${BOARD_DETAIL.b_code}" /> 
 								<input name="s_title" value="${CO.c_title}" readonly> 
 								<input name="s_singer" value="${CO.c_singer}" readonly>
-
-								<button>
-									<i class="far fa-plus-square fa-lg"></i>
-								</button>
-
+								<c:if test="${MEMBER.m_nickname == BOARD_DETAIL.b_nick}">
+									<button>
+										<i class="far fa-plus-square fa-lg"></i>
+									</button>
+								</c:if>
 							</form>
 						</th>
 					</tr>

@@ -93,7 +93,7 @@ public class BoardController {
 
 		bSer.updateHit(b_code);
 		BoardAndSongDTO bsDTO = bSer.findByIdWithList(b_code);
-
+		log.debug(">>>>>>>>>>>>>>>>> {}", bsDTO);
 		LikeVO likeVO = new LikeVO();
 		MemberVO memberVO = (MemberVO) session.getAttribute("MEMBER");
 		likeVO.setL_bcode(bsDTO.getB_code());
