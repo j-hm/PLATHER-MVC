@@ -64,7 +64,7 @@
 		
 		let user_nick = input_nick.value
 		
-		if(user_nick === "") {
+		if(user_nick.trim() === "") {
 			
 			msg_nick_error.classList.remove("view_answer")
 			
@@ -107,7 +107,7 @@
 		
 		let user_pw = input_pw.value
 		
-		if(user_pw === "") {
+		if(user_pw.trim() === "") {
 			
 			msg_pw_error.innerText = "* 비밀번호는 반드시 입력해야 합니다 *"
 			msg_pw_error.classList.add("view")
@@ -126,6 +126,7 @@
 			
 			msg_pw_error.classList.remove("view")
 			msg_pw_error.innerText = ""
+			return false
 			
 		} // else end
 	}	
@@ -136,7 +137,16 @@
 		let user_pw = input_pw.value
 		let user_re_pw = input_re_pw.value
 		
-	if(user_re_pw !== user_pw) {
+		if(user_re_pw ==="") {
+			
+			msg_re_pw_error.classList.remove("view")
+			
+			msg_re_pw_error.innerText = " * 비밀번호 재확인을 입력해주세요 * "
+			msg_re_pw_error.classList.add("view")
+			input_re_pw.focus()
+			return false
+			
+		} else if(user_re_pw !== user_pw) {
 		
 		msg_re_pw_error.classList.remove("view_answer")
 		
@@ -146,6 +156,7 @@
 		return false
 		
 	} else {
+		
 		msg_re_pw_error.classList.remove("view")
 		
 		msg_re_pw_error.innerText = " * 비밀번호가 일치합니다 * "
@@ -167,11 +178,15 @@
 			
 	}
 	
+	// 재확인 비밀번호
 	if(input_re_pw) {
 		
 		input_re_pw.addEventListener("keydown",re_pw_f)
 	}
 	
+	
+	
+	// button 클릭시
 	if(btn_update) {
 		btn_update.addEventListener("click",()=>{
 			
@@ -190,7 +205,8 @@
 			} else if(user_re_pw === "") {
 				re_pw_f();
 				return false
-			}
+			} 
+			
 			form.submit();
 		})
 	}
