@@ -24,16 +24,16 @@
 		SELECT * FROM view_nlist WHERE
 		n_code = #{n_code}
 	</select>
-	<select id="findByTitle" resultType="NoticeVO">
-		SELECT * FROM tbl_notice
+	<select id="findByTitle" resultType="NoticeDTO">
+		SELECT * FROM view_nlist
 		WHERE n_title LIKE CONCAT('%', #{n_title}, '%')
 	</select>
 	<select id="findByNick" resultType="NoticeDTO">
 		SELECT * FROM view_nlist
 		WHERE n_nickname LIKE CONCAT('%', #{n_nickname}, '%')
 	</select>
-	<select id="findByContent" resultType="NoticeVO">
-		SELECT * FROM tbl_notice
+	<select id="findByContent" resultType="NoticeDTO">
+		SELECT * FROM view_nlist
 		WHERE n_content LIKE CONCAT('%', #{n_content}, '%')
 	</select>
 	<insert id="insert" parameterType="NoticeVO">

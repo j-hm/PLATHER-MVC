@@ -11,7 +11,7 @@
 		
 	<nav id="sub_nav">	
 		<ul>
-			<li id="notic">공지사항</li>
+			<li id="notice">공지사항</li>
 			<li id="playlist">플레이리스트</li>
 			<li id="mypage">마이페이지</li>
 			
@@ -43,7 +43,7 @@
 			// menu에 li tag에만 event 적용
 			if(sub_menu.tagName === "LI") {
 				
-				if(sub_menu.id === "notic") {
+				if(sub_menu.id === "notice") {
 					location.href = "${rootPath}/notice/"
 					
 				} else if(sub_menu.id === "playlist") {

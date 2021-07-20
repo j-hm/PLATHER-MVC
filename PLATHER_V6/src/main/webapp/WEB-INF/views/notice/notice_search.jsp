@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Project PLATHER</title>
-<link href="${rootPath}/static/css/notice_list.css?ver=2021-07-14-001"
+<link href="${rootPath}/static/css/notice_list.css?ver=2021-07-20-001"
 	rel="stylesheet" />
 </head>
 <body>

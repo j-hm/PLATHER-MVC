@@ -11,11 +11,11 @@ public interface NoticeDao extends GenericDao<NoticeVO, String> {
 
 	public int updateHit(String n_code);
 
-	public List<NoticeVO> findByTitle(String n_title);
+	public List<NoticeDTO> findByTitle(String n_title);
 
 	public List<NoticeDTO> findByNick(String n_nickname);
 
-	public List<NoticeVO> findByContent(String n_content);
+	public List<NoticeDTO> findByContent(String n_content);
 	
 	public NoticeDTO findByNcode(String n_code);
 

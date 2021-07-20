@@ -98,13 +98,13 @@ public class NoticeController {
 	public String search(@PathVariable(name = "CAT") String cat, Model model,
 			@RequestParam(name = "text", required = false, defaultValue = "") String text) {
 		if (cat.equalsIgnoreCase("TITLE")) {
-			List<NoticeVO> searchTitle = nDao.findByTitle(text);
+			List<NoticeDTO> searchTitle = nDao.findByTitle(text);
 			model.addAttribute("SearchResult", searchTitle);
 		} else if (cat.equalsIgnoreCase("NICK")) {
 			List<NoticeDTO> searchNick = nDao.findByNick(text);
 			model.addAttribute("SearchResult", searchNick);
 		} else if (cat.equalsIgnoreCase("CONTENT")) {
-			List<NoticeVO> searchContent = nDao.findByContent(text);
+			List<NoticeDTO> searchContent = nDao.findByContent(text);
 			model.addAttribute("SearchResult", searchContent);
 		}
 		model.addAttribute("TEXT", text);

@@ -6,6 +6,7 @@
 
 .notice {
 	padding: 150px;
+	position: relative;
 }
 
 .title {
@@ -62,6 +63,8 @@
 .tolist {
 	margin-right: 135px;
 	float: right;
+	position: absolute;
+	right: 10px;
 }
 
 .no_result {
