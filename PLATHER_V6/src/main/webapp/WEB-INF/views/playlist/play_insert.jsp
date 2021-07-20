@@ -14,7 +14,7 @@
 	<%@include file="/WEB-INF/views/include/include_header.jspf"%>
 
 	<div id="main_container">
-		<form method="POST" action="${rootPath}/board/insert">
+		<form>
 			<input name="b_code" value="${BCODE}" type="hidden" />
 			<div class="div_list_title">
 				<label class="label_title">플레이리스트 제목</label> <input name="b_title"
