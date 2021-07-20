@@ -1,16 +1,15 @@
-@charset "UTF-8";
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
 
 #main_container {
-	padding: 50px;
 	padding-top: 130px;
 	line-height: 30px;
 	width: 80%;
 	margin: 0 auto;
 	min-height: calc(100vh - 70px);
-}
-
-#main_container div {
-	white-space: nowrap;
 }
 
 label {
@@ -24,38 +23,49 @@ label {
 
 input {
 	width: 70%;
-	padding: 8px;
+	height: 30px;
 	outline: 0;
 }
-
-button {
-	background-color: #91c788;
-	border: 0px;
-	border-radius: 5px;
+input.nickname {
+	border: 1px solid transparent;
 }
-
-span.nickname {
-	font-weight: 800;
+div.div_content{
+	display: flex;
 }
-
 textarea {
 	width: 70%;
 	margin-left: 4px;
 	resize: none;
 	overflow-y: scroll;
 }
+button {
+	background-color: #91c788;
+	border: 0px;
+	border-radius: 5px;
+}
 
+button:hover {
+	cursor: pointer;
+	font-weight: bold;
+}
 .list_buttons {
+	display: flex;
 	text-align: right;
 	padding: 20px;
 	margin-right: 7%;
+	width: 100%;
+	
 }
-
 div.list_buttons button {
 	padding: 5px 10px;
-	margin-top: 10px;
+	
 }
-
+button.btn_register {
+	margin-left: auto;
+}
+button.btn_register {
+	margin-right: 10px;
+}
 fieldset {
 	margin-left: 30px;
 	padding: 10px 0px;
@@ -74,22 +84,69 @@ legend {
 	color: white;
 	font-weight: 900;
 }
-
-.div_content {
-	display: flex;
-}
-
-button:hover {
-	cursor: pointer;
-	font-weight: bold;
-}
-
 div.add_buttons {
 	text-align: right;
-	margin-right: 30px;
+	padding-right: 10px;
 }
 
 .add_buttons button {
 	padding: 7px;
 	width: 20%;
+}
+
+
+
+
+div#modal{
+	position:absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 70%;
+	z-index: 10;
+	background-color: white;
+ 	 padding: 6rem;
+  	border-radius: 5px;
+  	box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  	
+}
+div.hidden{
+	display: none;
+}
+div.visibility {
+	visibility: hidden;
+	height: 350px;
+	white-space: nowrap;
+}
+div#table{
+	height: 350px;
+	overflow-y: scroll;
+}
+
+table {
+	border-collapse: separate;
+	border-spacing: 1px;
+	text-align: left;
+	line-height: 1.5;
+	border-top: 1px solid #ccc;
+	margin: 0px auto;
+	width: 70%;
+	
+}
+
+th {
+	background-color: #e1e1e1;
+	text-align: center;
+	width: 150px;
+	padding: 10px;
+	font-weight: bold;
+	border-bottom: 1px solid #ccc;
+}
+
+table td {
+	text-align: center;
+	width: 350px;
+	padding: 10px;
+	vertical-align: top;
+	border-bottom: 1px solid #ccc;
 }

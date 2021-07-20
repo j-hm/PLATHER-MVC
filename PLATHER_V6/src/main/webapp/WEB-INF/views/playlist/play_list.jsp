@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="${rootPath}/static/css/play_list.css?ver=2021-06-15-002"
+<link href="${rootPath}/static/css/play_list.css?ver=2021-06-15-003"
 	rel="stylesheet" />
 
 </head>
@@ -28,14 +28,15 @@
 				</select>
 			</div>
 			<table class="list">
-				<tr>
-					<th>No.</th>
-					<th>제목</th>
-					<th>작성자</th>
-					<th>찜</th>
-					<th>등록일</th>
-					
-				</tr>
+				<thead>
+					<tr>
+						<th>No.</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>찜</th>
+						<th>등록일</th>
+					</tr>
+				</thead>
 				<c:choose>
 					<c:when test="${empty BOARDLIST}">
 						<tr>
@@ -44,6 +45,7 @@
 					</c:when>
 					<c:otherwise>
 				<c:forEach items="${BOARDLIST}" var="B" varStatus="i">
+				<tbody>
 				<tr data-code="${B.b_code}">
 					<td><c:if test="${PAGE_NUM >1 }">${(PAGE_NUM-1)*10 + (i.index+1)}</c:if>
 					<c:if test="${PAGE_NUM ==1 }">${i.index+1}</c:if></td>
@@ -53,7 +55,7 @@
 				<td><fmt:formatDate pattern="yyyy-MM-dd" 
                                 value="${B.b_date}"/></td>
 				</tr>
-				
+				</tbody>
 				</c:forEach>
 				</c:otherwise>
 				</c:choose>
@@ -71,15 +73,18 @@
 </body>
 <script>
 	const select_cat = document.querySelector("select[name='category']")
+	
 	select_cat.addEventListener("change",()=>{
 		const category = select_cat.value
 		//alert(category)
 		location.href="${rootPath}/board?category="+category
 	})
+	
 	//등록 버튼을 누를 때
 	document.querySelector("button.btn_add").addEventListener("click",(e)=>{
 		location.href="${rootPath}/board/insert"
 	})
+	
 	// 테이블 데이터를 클릭할때 
 	document.querySelector("table.list").addEventListener("click",(e)=>{
 		let target =e.target;
@@ -92,6 +97,7 @@
 			}
 		}
 	})
+	
 	//pagination(includ_pagination_board)
 	const page_nav = document.querySelector("ul.page_nav")
 	if(page_nav) {

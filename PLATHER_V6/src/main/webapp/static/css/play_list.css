@@ -63,6 +63,12 @@
 	width: 50%;
 }
 
+.list tbody tr:hover{
+	cursor: pointer;
+	font-weight: 900;
+	background-color: rgba(145, 199, 136, 0.3);
+}
+
 .list td {
 	text-align: center;
 	width: 350px;
