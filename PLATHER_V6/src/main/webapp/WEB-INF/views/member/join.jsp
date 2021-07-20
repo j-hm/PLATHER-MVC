@@ -218,7 +218,9 @@ if(input_nick) {
 			let user_nick = input_nick.value
 			
 			// nickname 중복검사
-			if(user_nick ==="") {
+			if(user_nick === "") {
+				
+					input_nick.style.backgroundColor = "rgba(245, 63, 63, 0.3)";
 					msg_error.innerText = " * 사용자 닉네임 반드시 입력하세요 *"
 					msg_error.style.textAlign = "center"
 					msg_error.classList.add("view")
