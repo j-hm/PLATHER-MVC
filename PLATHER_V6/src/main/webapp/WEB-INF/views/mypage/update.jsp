@@ -60,7 +60,7 @@
 	
 	/* 함수 선언 */
 	// 닉네임
-	let nick_f = (e)=>{
+	let nick_f = ()=>{
 		
 		let user_nick = input_nick.value
 		
@@ -103,7 +103,7 @@
 	}
 	
 	// 비밀번호
-	let pw_f = (e) => {
+	let pw_f = () => {
 		
 		let user_pw = input_pw.value
 		
@@ -132,7 +132,7 @@
 	}	
 
 	// 재 확인 비밀번호
-	let re_pw_f =(e) => {
+	let re_pw_f = () => {
 		
 		let user_pw = input_pw.value
 		let user_re_pw = input_re_pw.value
