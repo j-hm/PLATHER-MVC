@@ -64,7 +64,7 @@
 		
 		let user_nick = input_nick.value
 		
-		if(user_nick.trim() === "") {
+		if(user_nick === "") {
 			
 			msg_nick_error.classList.remove("view_answer")
 			
@@ -107,7 +107,7 @@
 		
 		let user_pw = input_pw.value
 		
-		if(user_pw.trim() === "") {
+		if(user_pw === "") {
 			
 			msg_pw_error.innerText = "* 비밀번호는 반드시 입력해야 합니다 *"
 			msg_pw_error.classList.add("view")
