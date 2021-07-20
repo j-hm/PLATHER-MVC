@@ -42,6 +42,9 @@
 .update input:hover {
   background-color: #feffdf;
 }
+input#m_id {
+	background-color: rgb(211,211,211);
+}
 .update button {
   padding: 10px 20px;
   outline: 0;
