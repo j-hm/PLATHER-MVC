@@ -81,7 +81,6 @@ form.comment table td {
 		<table>
 			<tr>
 				<th>
-				<img src="${rootPath}/static/images/profile.png" class="profile" width="18px">
 				<span>${MEMBER.m_nickname}</span>
 				</th>
 				<th><input type="hidden" name="c_id" value="${MEMBER.m_id}"/></th>
@@ -141,7 +140,7 @@ form.comment table td {
 			</c:choose>
 			<tr>
 				<td colspan="3">
-					<p class="com">${CO.c_comment}</p>
+					<p style="white-space:pre;" class="com">${CO.c_comment}</p>
 					<form method="POST" class="update_form"
 						action="${rootPath}/comment/update">
 						<input type="hidden" name="c_seq" value="${CO.c_seq}" />
@@ -188,5 +187,4 @@ form.comment table td {
 		*/
 
 	})
-	
 </script>

@@ -54,7 +54,7 @@ CREATE table tbl_notice (
 	n_content	VARCHAR(4000)	NOT NULL,	
 	n_date	CHAR(10)	NOT NULL,	
 	n_time	CHAR(8)	NOT NULL,	
-	n_id	VARCHAR(125)	NOT NULL default 'server@gmail.com',	
+	n_id	VARCHAR(125) NOT NULL default 'master',	
 	n_hit	INT	 default '0'
 );
 CREATE table tbl_member(
@@ -173,7 +173,20 @@ FOREIGN KEY (l_bcode)
 REFERENCES tbl_board(b_code)
 ON DELETE CASCADE;
 
+---------------------------------------------------------------------------------------
+-- fk delete
+--------------------------------------------------------------------------------------
 
+alter table tbl_board drop foreign key fk_b_id;
 
+alter table tbl_comment drop foreign key fk_c_id;
+
+alter table tbl_like drop foreign key fk_l_id;
+
+alter table tbl_comment drop foreign key fk_c_bcode;
+
+alter table tbl_song drop foreign key fk_s_bcode;
+
+alter table tbl_like drop foreign key fk_l_bcode;
 
 
