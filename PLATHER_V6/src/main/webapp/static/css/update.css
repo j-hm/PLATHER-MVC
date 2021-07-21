@@ -42,9 +42,11 @@
 .update input:hover {
   background-color: #feffdf;
 }
+
 input#m_id {
 	background-color: rgb(211,211,211);
 }
+
 .update button {
   padding: 10px 20px;
   outline: 0;
@@ -92,10 +94,10 @@ div.pw.error, div.re_pw.error, div.nick.error {
 
 div#nick_box input, div#pw_box input, div#re_pw_box input {
 	
-		width: 35%;
+		width: 36%;
 }
 
 div#nick_box label, div#pw_box label, div#re_pw_box label {
 	
-		margin-left: 35px;
+		margin-left: 40px;
 }
