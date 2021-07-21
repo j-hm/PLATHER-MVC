@@ -99,7 +99,10 @@ button.btn_update {
 		<input type="hidden" name="c_bcode" value="${BOARD_DETAIL.b_code}" />
 		<table>
 			<tr>
-				<th><span>${MEMBER.m_nickname}</span></th>
+				<th>
+					<img style="width:20px" style="margin-right:10px" src="${rootPath}/static/images/profile_${MEMBER.m_profile}.png">
+					<span>${MEMBER.m_nickname}</span>
+				</th>
 				<th><input type="hidden" name="c_id" value="${MEMBER.m_id}" /></th>
 			</tr>
 			<tr>
@@ -121,7 +124,10 @@ button.btn_update {
 	<table class="list">
 		<c:forEach items="${COMS}" var="CO" varStatus="i">
 			<tr data-seq="${CO.c_seq}" data-index="${i.index}">
-				<th>${CO.c_nickname}</th>
+				<th>
+					<img style="width:20px" style="margin-right:10px" src="${rootPath}/static/images/profile_${CO.c_profile}.png">
+					<span>${CO.c_nickname}</span>
+				</th>
 				<th>${CO.c_date}</th>
 				<th class="drop"><c:if
 						test="${MEMBER.m_nickname == CO.c_nickname}">

@@ -16,6 +16,7 @@ public class CommentDTO {
 	private String c_bcode;
 	private String c_id;
 	private String c_nickname;
+	private String c_profile;
 	private String c_comment;
 	private String c_date;
 	private String c_title;
