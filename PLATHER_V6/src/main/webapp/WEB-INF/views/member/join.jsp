@@ -13,7 +13,7 @@ body {
 
 </style>
 
-<link href="${rootPath}/static/css/join.css?ver=2021-07-21-0102" rel="stylesheet" />
+<link href="${rootPath}/static/css/join.css?ver=2021-07-21-002" rel="stylesheet" />
 
 		
 		
@@ -87,7 +87,6 @@ body {
 	let pw_error = document.querySelector("div.pw.error")
 	let re_pw_error = document.querySelector("div.re_pw.error")
 	let nick_error = document.querySelector("div.nick.error")
-	
 	/*함수 선언*/
 	
 	let id_f = (e) => {
@@ -95,22 +94,9 @@ body {
 				let user_id = e.currentTarget.value
 				
 				// 이메일 정규식
-				let email_rule = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-				
-				if(!email_rule.test(user_id)) {
-					
-					id_error.classList.remove("view_answer")
-					
-					id_error.innerText = " * ID는 이메일 형식으로 입력해야 합니다 * "
-					id_error.classList.add("view")
-					input_id.style.backgroundColor = "rgba(245, 63, 63, 0.3)";
-					input_id.focus()
-					return false
-					
-				}
+			
 				
 				if(user_id === "") {
-					
 					input_id.style.backgroundColor = "rgba(245, 63, 63, 0.3)";
 					msg_error.innerText = "* ID는 반드시 입력해야 합니다 *"
 					msg_error.style.textAlign = "center"
@@ -118,7 +104,20 @@ body {
 					input_id.focus()
 					return false
 					
-				} else {
+				} else if(!email_rule.test(user_id)) {
+					let email_rule = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+					
+					
+						
+						id_error.classList.remove("view_answer")
+						
+						id_error.innerText = " * ID는 이메일 형식으로 입력해야 합니다 * "
+						id_error.classList.add("view")
+						input_id.style.backgroundColor = "rgba(245, 63, 63, 0.3)";
+						input_id.focus()
+						return false
+						
+					} else {
 
 					fetch("${rootPath}/member/id_check?m_id=" + user_id)
 				 	.then(response=>response.text())
@@ -155,7 +154,7 @@ body {
 	} // id_f end
 	
 	
-	let pw_f = (e) => {
+	let pw_f = () => {
 		
 				let user_pw = input_pw.value
 				
@@ -277,7 +276,7 @@ if(input_id) {
 // 비밀번호 
 if(input_pw) {
 	
-	input_pw.addEventListener("keydown", pw_f) 
+	input_pw.addEventListener("keyup", pw_f) 
 	
 	}
 	
@@ -285,13 +284,13 @@ if(input_pw) {
 
 if(re_pw) {
 	
-	re_pw.addEventListener("keydown", re_pw_f)
+	re_pw.addEventListener("keyup", re_pw_f)
 }
 
 // 닉네임
 if(input_nick) {
 		
-		input_nick.addEventListener("keydown", nick_f)
+		input_nick.addEventListener("keyup", nick_f)
 }
 
 // 버튼 클릭시
