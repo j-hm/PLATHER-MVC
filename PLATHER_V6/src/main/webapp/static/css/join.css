@@ -8,7 +8,7 @@ div#title {
 	
 	width: 60%;
 	margin: 0 auto;
-	margin-top: 25px;
+	margin-top: 40px;
 	padding: 12px 0px;
 	
 
@@ -20,7 +20,7 @@ div#title {
 	letter-spacing: 3px;
 }
 
-form#member_input {
+form.member_input {
 	
 	border: 2px solid black;
 	border-bottom-left-radius:3px;
@@ -34,7 +34,7 @@ form#member_input {
 	text-align: center;
 }
 
-form#member_input img {
+form.member_input img {
 	
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -42,7 +42,7 @@ form#member_input img {
 	height: 10%; 
 }
 
-form#member_input div {
+form.member_input div {
 
 	text-align: left; 
 	padding: 10px;
