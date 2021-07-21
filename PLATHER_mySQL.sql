@@ -97,14 +97,15 @@ l_likecheck int default 0
 -- LEFT JOIN tbl_board B
 -- ON M.m_id = B.b_id);
 
-
+DROP VIEW view_clist;
 CREATE VIEW view_clist AS
 (
 SELECT
 	C.c_seq AS c_seq,
     C.c_bcode AS c_bcode,
 	C.c_id AS c_id,
-	M.m_nickname  AS c_nickname,
+	M.m_profile  AS c_profile,
+    M.m_nickname  AS c_nickname,
 	C.c_comment AS c_comment,
 	C.c_date AS c_date,
 	C.c_title AS c_title,
