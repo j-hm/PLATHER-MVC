@@ -16,6 +16,14 @@ form.comment table textarea {
 form.comment table td {
 	text-align: right;
 }
+
+form.comment button {
+	background-color: #e1e1e1;
+	padding: 3px 5px;
+	border-radius: 5px;
+	margin-left: 10px;
+}
+
 .drop {
 	position: relative;
 	/* display: inline-block; */
@@ -61,6 +69,7 @@ form.comment table td {
 .update_form, .c_cancel {
 	display: none;
 }
+
 .list input {
 	background-color: #f3f0d7;
 	height: 25x;
@@ -74,19 +83,24 @@ form.comment table td {
 .list input:focus {
 	outline: none;
 }
+
+button.btn_update {
+	background-color: #e1e1e1;
+	padding: 3px 5px;
+	border-radius: 5px;
+	margin-left: 10px;
+}
 </style>
 <div class="comment">
 
-<!-- 댓글입력 -->
+	<!-- 댓글입력 -->
 	<h1>댓글</h1>
 	<form method="POST" class="comment" action="${rootPath}/comment/insert">
 		<input type="hidden" name="c_bcode" value="${BOARD_DETAIL.b_code}" />
 		<table>
 			<tr>
-				<th>
-				<span>${MEMBER.m_nickname}</span>
-				</th>
-				<th><input type="hidden" name="c_id" value="${MEMBER.m_id}"/></th>
+				<th><span>${MEMBER.m_nickname}</span></th>
+				<th><input type="hidden" name="c_id" value="${MEMBER.m_id}" /></th>
 			</tr>
 			<tr>
 				<th><input name="c_title" placeholder="노래"></th>
@@ -102,15 +116,15 @@ form.comment table td {
 			</tr>
 		</table>
 	</form>
-	
-<!-- 댓글목록 -->
+
+	<!-- 댓글목록 -->
 	<table class="list">
 		<c:forEach items="${COMS}" var="CO" varStatus="i">
 			<tr data-seq="${CO.c_seq}" data-index="${i.index}">
 				<th>${CO.c_nickname}</th>
 				<th>${CO.c_date}</th>
-				<th class="drop">
-					<c:if test="${MEMBER.m_nickname == CO.c_nickname}">
+				<th class="drop"><c:if
+						test="${MEMBER.m_nickname == CO.c_nickname}">
 						<button class="dropbtn">
 							<i class="fas fa-ellipsis-v fa-lg"></i>
 						</button>
@@ -119,8 +133,7 @@ form.comment table td {
 							<p class="c_cancel">취소
 							<p class="c_delete">삭제
 						</div>
-					</c:if>
-				</th>
+					</c:if></th>
 			</tr>
 			<c:choose>
 				<c:when test="${not empty CO}">
@@ -128,9 +141,10 @@ form.comment table td {
 						<th colspan="3">
 							<form method="post" action="${rootPath}/comment/insert/song">
 
-								<input type="hidden" name="c_bcode"	value="${BOARD_DETAIL.b_code}" /> 
-								<input name="s_title" value="${CO.c_title}" readonly> 
-								<input name="s_singer" value="${CO.c_singer}" readonly>
+								<input type="hidden" name="c_bcode"
+									value="${BOARD_DETAIL.b_code}" /> <input name="s_title"
+									value="${CO.c_title}" readonly> <input name="s_singer"
+									value="${CO.c_singer}" readonly>
 								<c:if test="${MEMBER.m_nickname == BOARD_DETAIL.b_nick}">
 									<button>
 										<i class="far fa-plus-square fa-lg"></i>
@@ -146,7 +160,7 @@ form.comment table td {
 			</c:choose>
 			<tr>
 				<td colspan="3">
-					<p style="white-space:pre;" class="com">${CO.c_comment}</p>
+					<p style="white-space: pre;" class="com">${CO.c_comment}</p>
 					<form method="POST" class="update_form"
 						action="${rootPath}/comment/update">
 						<input type="hidden" name="c_seq" value="${CO.c_seq}" />
