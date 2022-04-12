@@ -1,6 +1,6 @@
 # Plather(*Pla*y, Toge*ther*)
 
->플레이리스트 공유 게시판. 백엔드, 프론트엔드 담당. SpringMVC.
+>플레이리스트 공유 게시판. SpringMVC.
 
 2021.06.03 - 2021.07.21
 
